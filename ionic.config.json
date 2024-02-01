@@ -1,0 +1,8 @@
+{
+  "name": "Perfume",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "477da966"
+}
