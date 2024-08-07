@@ -1,26 +1,27 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>Au propos de vous</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <div class="container">
-      <h2>Quel est ton sexe ?</h2>
-      <div class="sexe">
-        <div class="card femme" routlink="">
-          <img src="/assets/filter/close-view-sexual-bride-with-makeup-hairstyle-wearing-white-silk-gown-veil-spraying-perfume-her-neck-enjoying-smell-against-gray-background-bridal-morning.jpg" alt="">
-          <div class="title">
-            <h3>Femme</h3>
+  <ion-toolbar>
+    <ion-title>Au propos de vous</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+      <div class="container">
+          <h2>Quel est votre genre?</h2>
+          <div class="sexe">
+              <div class="card femme">
+                  <img src="/assets/filter/audrey.jpeg" alt="">
+                  <div class="title">
+                      <h3 data-text="Femme">Femme</h3>
+                  </div>
+              </div>
+              <div class="card homme">
+                  <img src="/assets/filter/Black and white.jpeg" alt="">
+                  <div class="title">
+                      <h3 data-text="Homme">Homme</h3>
+                  </div>
+              </div>
           </div>
-        </div>
-        <div class="card homme">
-          <img src="/assets/filter/medium-shot-man-holding-serum.jpg" alt="">
-          <div class="title">
-            <h3>Homme</h3>
-          </div>
-        </div>
       </div>
-    </div>
-  </ion-content>
-  
+  </div>
+</ion-content>

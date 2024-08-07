@@ -1,56 +1,170 @@
+/* Remove vertical scrollbar and center content */
 ion-content {
-    --background: #e8e8e8; 
-  }
-  
+  --background: #f8f9fa; /* Light, neutral background for a premium feel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden;
+  overflow: hidden;
+}
+
+ion-title {
+  font-size: 24px; /* Base font size */
+  font-weight: bold; /* Bold text */
+  color: #333; /* Dark grey text color */
+  text-align: center; /* Centered text */
+  margin: 5px;
+  padding: 10px; /* Padding around the text */
+  background-color: #f9f9f9; /* Light grey background color */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+
+/* Center the main container */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+/* Style the container */
 .container {
-    padding: 16px;
-    text-align: center;
-  
-    h2 {
-      margin-bottom: 24px;
-      color: #333; // Couleur du texte du titre
-    }
-  
-    .sexe {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-  
-      .card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-  
-        &:hover {
-          transform: scale(1.05); // Zoom sur la carte au survol
-        }
-  
-        img {
-          width: 100%;
-          height: auto;
-          display: block;
-          transition: transform 0.3s ease;
-        }
-  
-        .title {
-          position: absolute;
-          bottom: 16px;
-          left: 0;
-          width: 100%;
-          text-align: center;
-          background: rgba(0, 0, 0, 0.5); // Fond semi-transparent pour le titre
-          color: white; // Couleur du texte du titre
-          padding: 8px 0;
-          box-sizing: border-box;
-  
-          h3 {
-            margin: 0;
-            font-size: 18px;
-          }
-        }
-      }
-    }
+  width: 100vw; /* Full viewport width */
+  height: 75vh; /* 75% of viewport height */
+  max-width: 1200px; /* Optional: max-width for very large screens */
+  max-height: 800px; /* Optional: max-height for very tall screens */
+  padding: 2%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Animation for container */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
   }
-  
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Style for the header text */
+h2 {
+  margin-bottom: 32px;
+  color: #343a40; /* Dark, elegant color */
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase; /* For a high-end feel */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container for the cards */
+.sexe {
+  display: flex;
+  justify-content: space-between;
+  height: 100%; /* Ensure the cards take up full container height */
+}
+
+/* Style the cards */
+.card {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  height: 80%;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover; /* Ensure images cover the container without distortion */
+  display: block;
+  transition: transform 0.8s ease-in-out; /* Transition for scaling */
+}
+
+.card:hover img {
+  object-fit: cover;
+  transform: scale(1.1); /* Scale image up on hover */
+}
+
+/* Overlay effect on hover */
+.card:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25); /* Black overlay with transparency */
+  z-index: 1; /* Ensure overlay is on top */
+}
+
+/* Style for the title */
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg); /* Center title */
+  color: #ffffff; /* Text color */
+  background: transparent; /* Transparent background */
+  text-align: center;
+  width: 100%; /* Adjust width as needed */
+  transition: color 0.3s ease;
+  cursor: pointer;
+  z-index: 2; /* Ensure title is on top of overlay */
+}
+
+/* Reset style for h3 */
+h3 {
+  width: fit-content;
+  position: relative;
+  font-size: 52px; /* Larger font size for emphasis */
+  color: #ffffff00;
+  text-transform: uppercase; /* For a more refined look */
+  -webkit-text-stroke: 0.3vw rgb(255, 255, 255); /* For WebKit-based browsers */
+  text-transform: uppercase;
+}
+
+/* Gradient animation effect */
+h3::before {
+  content: attr(data-text); /* Use data-text attribute */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  color: #ffffff;
+  -webkit-text-stroke: 0vw rgba(255, 255, 255, 0);
+  overflow: hidden; /* Hide overflow */
+  animation: none;
+}
+
+/* Define the keyframes for the animation */
+@keyframes fillAnimation {
+  0% {
+    height: 0; /* Start with width 0 */
+  }
+  100% {
+    height: 100%; /* End with width 100% */
+  }
+}
+
+/* Active class for triggering animation */
+.card:hover h3::before {
+  animation: fillAnimation 0.8s linear forwards; /* Apply animation */
+}
