@@ -1,0 +1,78 @@
+.settings-container {
+  padding: 20px;
+  background-color: #fff;
+
+  .section {
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      label {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .input-value {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        color: #000;
+
+        ion-icon {
+          margin-left: 10px;
+          color: #666;
+        }
+
+        .flag-icon {
+          width: 20px;
+          height: 14px;
+          margin-right: 5px;
+        }
+      }
+
+      ion-toggle {
+        --background: #ccc;
+        --background-checked: #4caf50;
+        --handle-background: #fff;
+      }
+    }
+  }
+
+  .account {
+    .log-out,
+    .delete-account {
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      color: #333;
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: block;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+    }
+
+    .delete-account {
+      color: #d9534f;
+    }
+  }
+}

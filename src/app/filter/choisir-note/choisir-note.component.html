@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Au propos de vous</ion-title>
+  </ion-toolbar>
+</ion-header> 
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+    <div class="container">
+      <h2 *ngIf="currentNote">Quel Parfum Vous Attire?</h2>
+      <div class="card-container" *ngIf="currentNote">
+        <div class="note-card">
+          <div class="image-container">
+            <div class="image">
+              <img [src]="currentNote.image" alt="{{currentNote.name}}">
+            </div>
+          </div>
+          <div class="choice-container" *ngIf="currentNote">
+         <div class="choice-button dislike" (click)="onChoiceMade('dislike')"><button class="Btn">
+          <span class="svgContainer">
+            <svg fill="white" class="svgIcon" viewBox="0 0 24 24" height="1.5em" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.42L10.59 12l-4.9 4.88a1 1 0 0 0 1.41 1.42L12 13.41l4.89 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+            </svg>
+          </span>
+          <span class="BG"></span>
+        </button>
+        </div> 
+            <div class="choice-button like" (click)="onChoiceMade('like')"><button class="Btn">
+              <span class="svgContainer">
+                <svg fill="white" class="svgIcon" viewBox="0 0 24 24" height="1.5em" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </span>
+              <span class="BG"></span>
+            </button>
+            </div> 
+          </div>
+          <div class="name-card">
+            <p>{{currentNote.name}}</p>
+          </div>
+          <div class="vertical-line"></div>
+        </div>
+      </div>
+         
+      <a routerLink="/tabs/tab1" class="skip-button" *ngIf="currentNote" (click)="onChoiceMade('skip')">Skip</a>
+      <p *ngIf="!currentNote">Vous avez vu tous les parfums !</p>
+    </div>
+  </div>
+</ion-content>

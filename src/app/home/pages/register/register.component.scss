@@ -1,0 +1,98 @@
+ion-content {
+    --ion-background-color: #ffffff;
+  
+    .register-header {
+      text-align: center;
+      padding: 20px;
+  
+      h1 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #000000;
+      }
+  
+      p {
+        font-size: 14px;
+        color: #888888;
+        margin-top: 10px;
+      }
+    }
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 14px;
+        color: black;
+      
+        svg {
+          margin-right: 5px;
+          transition: transform 0.2s ease;
+        }
+      
+        &:hover svg {
+          transform: translateX(-5px);
+        }
+      }
+  
+    .register-form {
+      ion-item {
+        --highlight-color-focused: #000000;
+        --background: #ffffff;
+        --border-color: #000000;
+        margin-top: 15px;
+  
+        ion-input {
+          --padding-start: 0;
+          font-size: 16px;
+          color: #000000;
+          padding: 10px 0;
+        }
+  
+        ion-icon {
+          color: #888888;
+        }
+  
+        ion-label {
+          font-size: 14px;
+          color: #888888;
+        }
+  
+        ion-checkbox {
+          --border-color: #000000;
+          --background: #ffffff;
+          --checkmark-color: #000000;
+        }
+      }
+  
+      .register-btn {
+        margin-top: 30px;
+  
+        ion-button {
+          --background: #000000;
+          --border-radius: 5px;
+          --color: #ffffff;
+          font-weight: bold;
+        }
+      }
+  
+      .account-link {
+        text-align: center;
+        margin-top: 20px;
+  
+        p {
+          font-size: 14px;
+          color: #000000;
+          font-weight: bold;
+        }
+        &:hover {
+          transform: scale(1.05); /* Zooms the element by 5% */
+          color: #252525; /* Change text color on hover */
+        }
+      }
+    }
+  }
+  

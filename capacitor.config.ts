@@ -1,6 +1,4 @@
-
 import { CapacitorConfig } from '@capacitor/cli';
-
 
 const config: CapacitorConfig = {
   appId: 'com.goodflower',
@@ -26,8 +24,11 @@ const config: CapacitorConfig = {
       layoutName: "launch_screen",
       useDialog: true,
     },
+    Facebook: {
+      appId: "825859883024391",
+      appName: "Good Flower",
+    },
   },
-  
 };
 
 export default config;

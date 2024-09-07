@@ -1,0 +1,54 @@
+ 
+ <ion-header>
+  <ion-toolbar>
+  <ion-title>Au propos de vous</ion-title>
+  </ion-toolbar>
+</ion-header> 
+<ion-content>
+  <ion-content>
+    <div class="about-you-container">
+      <h2 class="question-text">Avez-vous des parfums préférés ? </h2>
+      <ion-item lines="none" class="input-item">
+        <ion-input 
+          placeholder="Parfum" 
+          (ionInput)="searchProduct($event)"
+        ></ion-input>
+        <ion-icon slot="end" name="search-outline"></ion-icon>
+      </ion-item>
+    </div>
+  
+    <ion-list style="background: #ffff;" *ngIf="filteredProducts.length > 0">
+      <ion-item 
+        *ngFor="let product of filteredProducts" 
+        (click)="toggleProductSelection(product)"
+        [class.selected]="isSelected(product)"
+      >
+        <ion-avatar slot="start">
+          <img [src]="product.image" alt="{{ product.name }}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ product.name }}</h2>
+        </ion-label>
+        <ion-icon style="background: #000000;" [name]="isSelected(product) ? 'checkmark-outline' : 'add-outline'"></ion-icon>
+      </ion-item>
+    </ion-list>
+  
+    <div *ngIf="searchTermEntered && filteredProducts.length === 0" class="no-results">
+      <p>Aucun produit trouvé.</p>
+    </div>
+  
+    <div class="sign-btn-wrap">
+      <ion-button 
+      class="sign-btn"  
+      fill="solid" 
+      type="button" 
+      (click)="confirmSelection()"
+      [disabled]="selectedProducts.length === 0"
+    >
+      Confirmer
+    </ion-button> 
+    
+    
+    </div>
+  </ion-content>
+  

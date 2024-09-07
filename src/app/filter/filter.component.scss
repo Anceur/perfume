@@ -1,6 +1,6 @@
 /* Remove vertical scrollbar and center content */
 ion-content {
-  --background: #f8f9fa; /* Light, neutral background for a premium feel */
+  --background: #ffffff; /* Light, neutral background for a premium feel */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,19 +8,34 @@ ion-content {
   overflow-x: hidden;
   overflow: hidden;
 }
+ion-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px 0px 80px 80px;
+  // display: none;
+  // visibility: hidden;
 
-ion-title {
-  font-size: 24px; /* Base font size */
-  font-weight: bold; /* Bold text */
-  color: #333; /* Dark grey text color */
-  text-align: center; /* Centered text */
-  margin: 5px;
-  padding: 10px; /* Padding around the text */
-  background-color: #f9f9f9; /* Light grey background color */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  ion-toolbar {
+    border-radius: 0px 0px 80px 80px;
+    --background: linear-gradient(to right, #000000, #000000);
+    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
+    animation: wave 10s infinite linear;
+
+    ion-title {
+      color: white;
+      text-align: center;
+    }
+  }
 }
 
+@keyframes wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
 
 /* Center the main container */
 .main-container {

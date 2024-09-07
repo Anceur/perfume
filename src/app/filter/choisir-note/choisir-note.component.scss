@@ -1,0 +1,258 @@
+/* ion-content styling */
+ion-content {
+  --background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* ion-header styling */
+ion-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px 0px 80px 80px;
+  // display: none;
+  // visibility: hidden;
+
+  ion-toolbar {
+    border-radius: 0px 0px 80px 80px;
+    --background: linear-gradient(to right, #000000, #000000);
+    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
+    animation: wave 10s infinite linear;
+
+    ion-title {
+      color: white;
+      text-align: center;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+/* Main container styling */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Container for the note card */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 75vh;
+  max-width: 1200px;
+  max-height: 800px;
+  padding: 2%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heading styling */
+h2 {
+  margin-bottom: 32px;
+  color: #343a40;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* يجعل العناصر داخل الكارد تبدأ من الأعلى */
+  text-align: center;
+  border: 2px solid #ddd;
+  height: 40vh;
+  width: 80%;
+  max-width: 300px;
+  background-color: #fff;
+  border-radius: 35px 0px 35px 0px;
+  position: relative;
+  box-shadow: 1px 16px 10px rgba(33, 24, 0, 0.1);
+}
+
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 40%;
+}
+
+.image img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  border-top-left-radius: 35px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.choice-container {
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  position: absolute;
+  bottom: 95px;
+  z-index: 2;
+}
+.Btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+  transition: all .3s;
+  border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #f09433;
+  background: black;
+  z-index: -1;
+  border-radius: 40px;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.Btn:hover .svgContainer {
+  background-color: rgba(156, 156, 156, 0.466);
+}
+
+// .choice-button {
+//   font-size: 30px;
+//   cursor: pointer;
+//   padding: 10px;
+//   border-radius: 50%;
+//   background-color: #fff;
+//   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+// }
+
+// .choice-button.dislike {
+//   color: red;
+// }
+
+// .choice-button.like {
+//   color: green;
+// }
+
+.vertical-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  height: 30vh;
+  transform: translateX(-50%);
+  width: 1px;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+.name-card {
+  margin-top: 136px;
+}
+
+.name-card p {
+  font-size: 18px;
+  color: #343a40;
+  font-weight: bold;
+}
+
+/* Skip button styling */
+.skip-button {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+/* Show skip button if there is a currentNote */
+.skip-button.show {
+  display: block;
+}
+
+/* Hide skip button if no currentNote */
+.skip-button:not(.show) {
+  display: none;
+}
+
+/* Styling for message when no notes */
+p {
+  text-align: center;
+  margin-top: 20px;
+}

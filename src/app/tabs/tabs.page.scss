@@ -1,5 +1,9 @@
 /* src/app/app.component.scss */
 
 ion-tab-bar{
-    --background: #ffffff; /* Replace with your desired background color */
+    border-radius: 40px 40px 0px 0px;
+    --background: linear-gradient(to right, #000000, #000000);
+    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
+    animation: wave 10s infinite linear;
+    padding: 0px 23px;
   }

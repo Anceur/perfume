@@ -7,33 +7,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit, OnDestroy {
-  @ViewChild('scrollWrapper', { static: true }) scrollWrapper!: ElementRef;
+  @ViewChild('swiperContainer', { static: true }) swiperContainer!: ElementRef;
   progressValue: number = 0;
   private scrollInterval: any;
-  private totalWidth: number = 0;
-  private itemWidth: number = 0;
-  private pageIndex: number = 0;
   private pagesCount: number = 0;
-  private scrollStep: number = 1;
-  private scrollDelay: number = 3000;
   private manualScroll: boolean = false;
   private lastScrollTime: number = 0;
+  private scrollDelay: number = 3000;
   private manualScrollDelay: number = 5000;
+
+  autoPlayConfig = {
+    delay: 3000,
+    disableOnInteraction: false
+  };
 
   pages = [
     {
       title: "Vous cherchez un parfum ?",
-      image: "assets/home/1-removebg-preview.png",
+      image: "assets/home/1.webp",
       description: "Partagez qui vous êtes, ce que vous aimez ou les goûts de la personne à qui vous souhaitez offrir un parfum"
     },
     {
       title: "Une sélection d'experts",
-      image: "assets/home/2-removebg-preview.png",
+      image: "assets/home/2.webp",
       description: "Découvrez les parfums qui vous conviennent le mieux parmi plusieurs milliers et sélectionnez ceux que vous souhaitez tester en magasin."
     },
     {
       title: "Où que tu sois",
-      image: "assets/home/3-removebg-preview.png",
+      image: "assets/home/3.webp",
       description: "Des grandes chaînes aux petits détaillants de niche, choisissez votre détaillant de parfums à proximité et trouvez la perle rare !"
     }
   ];
@@ -47,21 +48,14 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   updateDimensions() {
-    const wrapper = this.scrollWrapper.nativeElement as HTMLElement;
-    this.itemWidth = wrapper.clientWidth;
+    const swiper = this.swiperContainer.nativeElement.swiper;
     this.pagesCount = this.pages.length;
-    this.totalWidth = this.itemWidth * this.pagesCount;
     this.updateProgress();
   }
 
   updateProgress() {
-    const wrapper = this.scrollWrapper.nativeElement as HTMLElement;
-    const scrollLeft = wrapper.scrollLeft;
-    const itemWidth = this.itemWidth;
-
-    const currentIndex = Math.round(scrollLeft / itemWidth);
-    this.pageIndex = currentIndex;
-
+    const swiper = this.swiperContainer.nativeElement.swiper;
+    const currentIndex = swiper.activeIndex;
     this.progressValue = (currentIndex + 1) / this.pagesCount;
   }
 
@@ -72,28 +66,13 @@ export class HomePage implements OnInit, OnDestroy {
       }
       this.manualScroll = false;
 
-      const wrapper = this.scrollWrapper.nativeElement as HTMLElement;
-      const maxScrollLeft = this.totalWidth - wrapper.clientWidth;
-
-      this.pageIndex = (this.pageIndex + this.scrollStep) % this.pagesCount;
-      const targetScrollLeft = this.pageIndex * this.itemWidth;
-
-      wrapper.scrollTo({
-        left: targetScrollLeft,
-        behavior: 'smooth'
-      });
-
+      const swiper = this.swiperContainer.nativeElement.swiper;
+      swiper.slideNext();
       this.updateProgress();
-
-      if (this.pageIndex === this.pagesCount - 1) {
-        setTimeout(() => {
-          this.router.navigate(['/filter']);
-        }, this.scrollDelay);
-      }
     }, this.scrollDelay);
   }
 
-  onScroll() {
+  onSlideChange() {
     this.updateProgress();
     this.manualScroll = true;
     this.lastScrollTime = Date.now();

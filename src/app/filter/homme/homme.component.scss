@@ -1,0 +1,205 @@
+ion-content {
+  --background: #ffffff;
+}
+ion-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px 0px 80px 80px;
+  // display: none;
+  // visibility: hidden;
+
+  ion-toolbar {
+    border-radius: 0px 0px 80px 80px;
+    --background: linear-gradient(to right, #000000, #000000);
+    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
+    animation: wave 10s infinite linear;
+
+    ion-title {
+      color: white;
+      text-align: center;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+
+// Container for the search input and instructions
+.about-you-container {
+  margin-top: 20%;
+
+  h2 {
+    margin-bottom: 32px;
+    color: #343a40; /* Dark, elegant color */
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase; /* For a high-end feel */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .input-item {
+    --background: transparent; /* Background for input fields */
+    margin-bottom: 15px; /* Space between form items */
+    position: relative;
+    padding-bottom: 5px; /* Adjust this value for space between input and underline */
+    
+    ion-input {
+      color: black; /* Text color */
+      --placeholder-color: #000000; /* Placeholder color */
+      font-size: 18px;
+    }
+
+    ion-icon {
+      color: black; /* Color of the icons */
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .input-item input {
+    border: none; /* Remove default border */
+    border-bottom: 1px solid black; /* Add underline */
+    width: 100%; /* Make input take full width */
+  }
+
+  .input-item ion-input {
+    --padding-start: 0;
+    --padding-end: 0;
+    border: none; /* Remove default border */
+  }
+
+  .input-item ion-icon {
+    color: black; /* Color of the icon */
+  }
+
+  .input-item {
+    margin-top: 20px;
+  }
+
+  .question-text {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+    margin-bottom: 10px;
+  }
+}
+
+// Styling the product list
+ion-list {
+  margin-top: 16px;
+  padding: 0 16px;
+
+  ion-item {
+    --background: #fff;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    ion-avatar {
+      width: 50px;
+      height: 50px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    ion-label {
+      margin-left: 10px;
+
+      h2 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+  }
+}
+
+.sign-btn-wrap {
+  text-align: center;
+
+  ion-button {
+    --background: black; /* Black background for normal button */
+    color: white !important; /* White text color */
+    padding: 12px 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+    --border-radius: 5px;
+    --color: #ffffff;
+    font-weight: bold;
+
+    &[disabled] {
+      --background: black !important; /* Keep the background black when disabled */
+      color: white !important; /* Ensure the text stays white */
+      opacity: 1; /* Keep the button fully opaque */
+    }
+  }
+}
+
+// Styling the "No Results" message
+.no-results {
+  margin-top: 20px;
+  padding: 0 16px;
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+
+  p {
+    margin: 0;
+  }
+}
+
+// Optional: Media Queries for Responsive Design
+@media (max-width: 768px) {
+  .about-you-container {
+    padding: 12px;
+  }
+
+  ion-list {
+    padding: 0 12px;
+
+    ion-item {
+      ion-avatar {
+        width: 40px;
+        height: 40px;
+      }
+
+      ion-label {
+        h2 {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .no-results {
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+ 
+  
+}

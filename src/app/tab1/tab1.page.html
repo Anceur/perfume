@@ -6,7 +6,7 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="partie-une">
-    <div class="Rechercher">
+    <!-- <div class="Rechercher">
       <div class="Rechercher">
         <ion-searchbar placeholder="Recherche" [debounce]="1000" (ionInput)="handleInput($event); showItems()"></ion-searchbar>
       <div *ngIf="showResults" >
@@ -18,7 +18,7 @@
         </ion-item>
       </div>
       </div>
-    </div>
+    </div> -->
     <div class="text-btn">
       <div class="text">
         <ion-text>
@@ -34,15 +34,15 @@
      
       </div>
       <div class="row">
-        <div class="spinner-container" *ngIf="showSpinner">
+        <!-- <div class="spinner-container" *ngIf="showSpinner">
           <ion-spinner name="circles" style="color: black;"></ion-spinner>
-        </div>
-        <swiper-container slides-per-view="2" speed="500" loop="false" css-mode="true" *ngIf="!showSpinner && products">
+        </div> -->
+        <swiper-container style="padding: 14px;"  slides-per-view="2" speed="500" loop="false" css-mode="true" *ngIf="!showSpinner && products">
           <swiper-slide *ngFor="let product of products">
             <ion-card (click)="clickCard(product.id)">
               <ion-img [src]="product.image"></ion-img>
-              <ion-card-content>
-                <p style="font-weight: 600;">{{product.name}}</p>
+              <ion-card-content style="height: 6vh;">
+                <p style="font-weight: 900; font-size: 14px;">{{product.name}}</p>
               </ion-card-content>
             </ion-card> 
           </swiper-slide>
@@ -69,10 +69,10 @@
 </div>
 
   <div class="brands">
-    <div class="spinner-container" *ngIf="showSpinner">
+    <!-- <div class="spinner-container" *ngIf="showSpinner">
       <ion-spinner name="circles" style="color: black;"></ion-spinner>
-    </div>
-  <swiper-container slides-per-view="3" speed="500" loop="false" css-mode="true" *ngIf="!showSpinner && brands">
+    </div> -->
+  <swiper-container slides-per-view="2" speed="500" loop="false" css-mode="true" *ngIf="!showSpinner && brands">
     <swiper-slide *ngFor="let brand of brands" >
       <div class="card-brand">
          <ion-card (click)="click(brand.nom)" style="cursor: pointer;"  >
@@ -101,9 +101,9 @@
 
 </div>
   <div class="notes">
-    <div class="spinner-container" *ngIf="showSpinner">
+    <!-- <div class="spinner-container" *ngIf="showSpinner">
       <ion-spinner name="circles" style="color: black;"></ion-spinner>
-    </div>
+    </div> -->
     <swiper-container slides-per-view="3" speed="500" loop="true" css-mode="true" *ngIf="!showSpinner && notes">
       <swiper-slide *ngFor="let note of notes"> 
         <ion-card  (click)="clicknote(note.name)" style="cursor: pointer;" >

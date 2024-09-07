@@ -1,9 +1,33 @@
 ion-content {
     --background: #e8e8e8; /* Replace with your desired background color */
   }
-  ion-toolbar{
-    --background: #fcfcfc;
-    color: #000;
+  ion-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px 0px 80px 80px;
+    // display: none;
+    // visibility: hidden;
+  
+    ion-toolbar {
+      border-radius: 0px 0px 80px 80px;
+      --background: linear-gradient(to right, #000000, #000000);
+      --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
+      animation: wave 10s infinite linear;
+  
+      ion-title {
+        color: white;
+        text-align: center;
+      }
+    }
+  }
+  
+  @keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: -100% 50%;
+    }
   }
   
   

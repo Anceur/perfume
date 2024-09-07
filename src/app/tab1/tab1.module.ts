@@ -17,7 +17,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page],
+  declarations: [Tab1Page,],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
  
 })

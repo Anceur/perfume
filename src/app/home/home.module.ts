@@ -11,6 +11,7 @@ import { HomePage } from './home.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
+
 @NgModule({
   imports: [
     CommonModule,

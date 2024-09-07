@@ -1,26 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Bienvenue à Good Flower</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div class="scroll-container">
-    <!-- غلاف يمكن تمريره أفقياً -->
-    <div class="scroll-wrapper" #scrollWrapper (scroll)="onScroll()">
-      <!-- تكرار العناصر في المصفوفة pages -->
-      <div class="scroll-item" *ngFor="let page of pages; let i = index">
-        <div class="page page-{{i + 1}}">
-          <h2>{{ page.title }}</h2>
-          <div class="image">
-            <img [src]="page.image" alt="">
-          </div>
-          <p>{{ page.description }}</p>
+<ion-content [fullscreen]="true" class="custom-background">
+  <swiper-container
+    #swiperContainer
+    [slidesPerView]="1"
+    [spaceBetween]="10"
+    [autoplay]="autoPlayConfig"
+    (slideChange)="onSlideChange()"
+    class="swiper-container"
+  >
+    <swiper-slide *ngFor="let page of pages">
+      <div class="page">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>{{ page.title }}</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <div class="image">
+          <img [src]="page.image" alt="">
         </div>
+        <p>{{ page.description }}</p>
       </div>
-    </div>
-  </div>
+    </swiper-slide>
+  </swiper-container>
 
-  <!-- شريط التقدم لعرض نسبة التمرير -->
-  <ion-progress-bar [value]="progressValue" color="primary" class="progress-bar"></ion-progress-bar>
+  <ion-progress-bar [value]="progressValue" class="progress-bar"></ion-progress-bar>
+
+  <div class="button-container">
+    <ion-button expand="block" color="light" routerLink="/login">Log In</ion-button>
+    <ion-button expand="block" color="dark" routerLink="/register">Register</ion-button>
+  </div>
 </ion-content>

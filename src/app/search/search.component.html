@@ -1,0 +1,20 @@
+<ion-header>
+<ion-toolbar>
+      <ion-title>Search</ion-title>
+</ion-toolbar>
+</ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <div class="Rechercher" style="margin-top: 25px;">
+      <ion-searchbar placeholder="Recherche" [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+      <div *ngIf="showResults">
+        <ion-item lines="none" *ngFor="let product of products">
+          <ion-avatar slot="start" (click)="clickCard(product.id)">
+            <img [src]="product.image" alt="{{ product.name }}">
+          </ion-avatar>
+          <ion-label>{{ product.name }}</ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+  

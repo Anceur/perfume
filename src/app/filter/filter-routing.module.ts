@@ -7,6 +7,19 @@ const routes: Routes = [
     path: '',
     component: FilterComponent,
   },
+  {
+    path: 'homme',
+    loadChildren: () => import('./homme/homme.module').then( m => m.HommeModule)
+  },
+  {
+    path: 'femme',
+    loadChildren: () => import('./femme/femme.module').then( m => m.FemmeModule)
+  },
+  {
+    path: 'choisir-note',
+    loadChildren: () => import('./choisir-note/choisir-note.module').then( m => m.ChoisirNoteModule)
+  },
+
 ];
 
 @NgModule({

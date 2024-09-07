@@ -1,21 +1,23 @@
+
+
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Au propos de vous</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-title>Au propos de vous</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="main-container">
       <div class="container">
           <h2>Quel est votre genre?</h2>
           <div class="sexe">
-              <div class="card femme">
+              <div class="card femme" routerLink="/filter/femme">
                   <img src="/assets/filter/audrey.jpeg" alt="">
                   <div class="title">
                       <h3 data-text="Femme">Femme</h3>
                   </div>
               </div>
-              <div class="card homme">
+              <div class="card homme" routerLink="/filter/homme">
                   <img src="/assets/filter/Black and white.jpeg" alt="">
                   <div class="title">
                       <h3 data-text="Homme">Homme</h3>

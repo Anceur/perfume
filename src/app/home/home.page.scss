@@ -1,13 +1,69 @@
+
+.swiper-container {
+  width: 100%;
+  height: 90%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+
 ion-content {
-  --background: #e8e8e8; 
+  --background: #ffffff; 
+    color: #000;
+    text-align: center;
+  
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 27px;
+  background-color: #e8e8e8;
+  border-top-right-radius: 100px 100px;
+  border-top-left-radius: 100px 100px;
+}
+
+ion-button {
+  flex: 1;
+  margin: 0 8px;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-button[color="light"] {
+  --background: #ffffff;
+  --color: #000000;
+  font-weight: bold;
+}
+
+ion-button {
+  --background: #000000;
+  --color: #ffffff;
+  font-weight: bold;
 }
 
 ion-header {
   position: relative;
   overflow: hidden;
+  border-radius: 0px 0px 80px 80px;
+  // display: none;
+  // visibility: hidden;
 
   ion-toolbar {
-    --background: linear-gradient(to right, #7e5002, #7c4005);
+    border-radius: 0px 0px 80px 80px;
+    --background: linear-gradient(to right, #000000, #000000);
     --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
     animation: wave 10s infinite linear;
 
@@ -52,10 +108,15 @@ ion-header {
 
   h2 {
     color: black;
+    font-weight: bold;
   }
 
   p {
     color: black;
+    font-weight: 600;
+    margin-top: 70px;
+    padding: 20px;
+    
   }
 }
 
@@ -64,12 +125,22 @@ ion-header {
   width: 70%;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 4%; /* Adjust as needed */
+  bottom: 13%;
+  --background: #f0f0f0;  
+  --progress-background: #000;  
 }
+
+
+
+
+
+ 
+
+
 
 .image img {
   max-width: 100%;
-  height: 60vh;
+    height: 50vh;
   animation: flipIn 1s ease-in-out; /* Apply the flipIn animation */
 }
 

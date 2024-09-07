@@ -1,0 +1,68 @@
+<ion-content>
+ 
+  <button routerLink="/home">
+    <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+      <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124h-604.774l188.084 188.084c7.992 7.992 7.992 20.947 0 28.939-4.001 3.991-9.241 5.997-14.47 5.997s-10.479-1.996-14.48-5.997l-223.009-223.009c-3.837-3.837-5.997-9.046-5.997-14.47s2.16-10.632 5.997-14.47l223.019-223.03c7.992-7.992 20.957-7.992 28.949 0 7.992 8.002 7.992 20.957 0 28.949l-188.073 188.073h604.753c11.297 0 20.466 9.159 20.466 20.466z"></path>
+    </svg>
+    <span style="color: black; font-weight: bold;">Retour</span>
+  </button>
+
+  <ion-card-content>
+ 
+    <form [formGroup]="validationFormUser" (ngSubmit)="LoginUser()">
+      <div class="wrapform">
+        <h2>Se connecter</h2>
+   
+        <ion-item>
+          <ion-input type="text" formControlName="email" placeholder="Adresse e-mail">
+            
+          </ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validationUserMessage.email">
+          <div style="color: red;" class="error_message" *ngIf="validationFormUser.get('email')?.hasError(validation.type) && (validationFormUser.get('email')?.dirty || validationFormUser.get('email')?.touched)">
+            {{validation.message}}
+          </div>
+        </ng-container>
+
+     
+        <ion-item>
+          <ion-input [type]="passwordType" formControlName="password" placeholder="Mot de passe"></ion-input>
+          <ion-icon 
+            slot="end" 
+            [name]="passwordToggleIcon" 
+            (click)="togglePasswordVisibility()">
+          </ion-icon>
+        </ion-item>
+        
+        <ng-container *ngFor="let validation of validationUserMessage.password">
+          <div style="color: red;" class="error_message" *ngIf="validationFormUser.get('password')?.hasError(validation.type) && (validationFormUser.get('password')?.dirty || validationFormUser.get('password')?.touched)">
+            {{validation.message}}
+          </div>
+        </ng-container>
+      </div>
+
+    
+      <div class="password_forgot">
+        <ion-button fill="clear" class="ion-no-padding">Mot de passe oublié ?</ion-button>
+      </div>
+
+   
+      <div class="sign-btn-wrap">
+        <ion-button  class="sign-btn"  fill="solid" type="submit"[disabled]="validationFormUser.valid">Se connecter</ion-button>
+      </div>
+    
+
+      <div class="text-tag">
+        <span>Ou via les réseaux sociaux</span>
+      </div>
+      <div class="social-btns">
+        <ion-button fill="clear" class="facebookbtn ion-no-padding" (click)="loginWithFacebook()" style="color: #3b5998;">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" class="googlebtn ion-no-padding" (click)="GoogleAuth()" style="color: #db4437;">
+          <ion-icon name="logo-google"></ion-icon>
+        </ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+</ion-content> 
