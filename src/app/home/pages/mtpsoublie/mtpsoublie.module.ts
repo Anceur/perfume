@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { MtpsoublieRoutingModule } from './mtpsoublie-routing.module';
 import { IonicModule } from '@ionic/angular';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MtpsoublieComponent } from './mtpsoublie.component';
+
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [MtpsoublieComponent],
   imports: [
     CommonModule,
     IonicModule,
-    
     ReactiveFormsModule,
     FormsModule,
-    LoginRoutingModule,
+    MtpsoublieRoutingModule,
+  
   ]
 })
-export class LoginModule { }
+export class MtpsoublieModule { }

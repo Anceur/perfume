@@ -1,4 +1,3 @@
-
 <ion-content>
   <button routerLink="/home">
     <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
@@ -23,6 +22,9 @@
             placeholder="Prénom"
             formControlName="firstName"
           ></ion-input>
+          <ion-note color="danger" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+            Prénom est requis
+          </ion-note>
         </ion-item>
         <ion-item>
           <ion-input
@@ -30,6 +32,9 @@
             placeholder="Nom"
             formControlName="lastName"
           ></ion-input>
+          <ion-note color="danger" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+            Nom est requis
+          </ion-note>
         </ion-item>
         <ion-item>
           <ion-input
@@ -37,6 +42,9 @@
             placeholder="Adresse e-mail"
             formControlName="email"
           ></ion-input>
+          <ion-note color="danger" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            Adresse e-mail invalide
+          </ion-note>
         </ion-item>
         <ion-item>
           <ion-input [type]="passwordType" formControlName="password" placeholder="Mot de passe"></ion-input>
@@ -45,22 +53,28 @@
             [name]="passwordToggleIcon" 
             (click)="togglePasswordVisibility()">
           </ion-icon>
+          <ion-note color="danger" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            Mot de passe requis (min. 8 caractères)
+          </ion-note>
         </ion-item>
 
-        <ion-item lines="none">
-          <ion-checkbox formControlName="terms" slot="start"></ion-checkbox>
+        <ion-item lines="none" class="terms-checkbox">
+          <ion-checkbox formControlName="terms" slot="start" class="box"></ion-checkbox>
           <ion-label>
             En vous inscrivant, vous acceptez les <a href="#">Conditions</a> et la <a href="#">Politique de confidentialité</a>.
           </ion-label>
         </ion-item>
-
-        <ion-item lines="none">
-          <ion-checkbox formControlName="newsletter" slot="start"></ion-checkbox>
+        <ion-note color="danger" *ngIf="registerForm.get('terms')?.invalid && registerForm.get('terms')?.touched">
+          Vous devez accepter les conditions
+        </ion-note>
+        
+        <ion-item lines="none" class="newsletter-checkbox">
+          <ion-checkbox formControlName="newsletter" slot="start" class="box"></ion-checkbox>
           <ion-label>
             Je souhaite recevoir les dernières nouvelles et les meilleurs prix pour mes parfums préférés par e-mail.
           </ion-label>
         </ion-item>
-
+        
         <div class="register-btn">
           <ion-button expand="block" fill="solid" type="submit">INSCRIPTION</ion-button>
         </div>

@@ -17,6 +17,14 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterModule)
   },
+  {
+    path: 'mtpsoublie',
+    loadChildren: () => import('./pages/mtpsoublie/mtpsoublie.module').then( m => m.MtpsoublieModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterModule)
+  },
 
 
 ];

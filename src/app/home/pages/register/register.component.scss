@@ -60,12 +60,16 @@ ion-content {
           font-size: 14px;
           color: #888888;
         }
-  
         ion-checkbox {
-          --border-color: #000000;
-          --background: #ffffff;
-          --checkmark-color: #000000;
+          --checkbox-background-checked: #ffffff;
         }
+        
+        ion-checkbox::part(container) {
+          border-radius: 6px;
+          border: 2px solid #ffffff;
+        }
+        
+        
       }
   
       .register-btn {
@@ -95,4 +99,21 @@ ion-content {
       }
     }
   }
+  .terms-checkbox, .newsletter-checkbox {
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 8px; /* Optional: Rounded corners */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 10px; /* Space between items */
+    background-color: #f9f9f9; /* Optional: Background color */
+  }
+  
+  .terms-checkbox ion-label, .newsletter-checkbox ion-label {
+    margin-left: 10px; /* Space between checkbox and label */
+  }
+  
+  
+    
+  
+  
+  
   

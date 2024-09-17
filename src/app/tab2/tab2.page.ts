@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { initializeApp } from 'firebase/app';
 import { getDatabase, onValue, ref } from "firebase/database";
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -57,6 +59,7 @@ export class Tab2Page implements OnInit {
   
 
   ngOnInit(): void {
+    const app = initializeApp(environment.firebaseConfig);
    
 
     const database = getDatabase();

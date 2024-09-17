@@ -3,19 +3,17 @@
     #swiperContainer
     [slidesPerView]="1"
     [spaceBetween]="10"
-    [autoplay]="autoPlayConfig"
-    (slideChange)="onSlideChange()"
     class="swiper-container"
   >
     <swiper-slide *ngFor="let page of pages">
       <div class="page">
         <ion-header>
           <ion-toolbar>
-            <ion-title>{{ page.title }}</ion-title>
+            <ion-title>{{ page.title }} </ion-title>
           </ion-toolbar>
         </ion-header>
         <div class="image">
-          <img [src]="page.image" alt="">
+          <img [src]="page.image" alt="" >
         </div>
         <p>{{ page.description }}</p>
       </div>
@@ -25,7 +23,7 @@
   <ion-progress-bar [value]="progressValue" class="progress-bar"></ion-progress-bar>
 
   <div class="button-container">
-    <ion-button expand="block" color="light" routerLink="/login">Log In</ion-button>
-    <ion-button expand="block" color="dark" routerLink="/register">Register</ion-button>
+    <ion-button class="white-button" routerLink="/login">Log In</ion-button>
+    <ion-button class="black-button" routerLink="/register">Register</ion-button>
   </div>
 </ion-content>

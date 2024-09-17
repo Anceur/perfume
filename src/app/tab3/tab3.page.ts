@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { Router, RouterModule } from '@angular/router';
 import { getDatabase, onValue, ref } from "firebase/database";
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
 register();
 @Component({
   selector: 'app-tab3',
@@ -13,6 +15,7 @@ export class Tab3Page implements OnInit {
   showResults: boolean | undefined;
   
   ngOnInit(): void {
+    const app = initializeApp(environment.firebaseConfig);
     const database = getDatabase();
     const starCountRef = ref(database, 'brands',);
     onValue(starCountRef, (snapshot) => {

@@ -1,9 +1,80 @@
+ion-content {
+  --background: #ffffff;
+  
+  
+}
+ion-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px 0px 80px 80px;
+  // display: none;
+  // visibility: hidden;
+
+  ion-toolbar {
+    border-radius: 0px 0px 80px 80px;
+    --background: linear-gradient(to right, #000000, #000000);
+    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
+    animation: wave 10s infinite linear;
+
+    ion-title {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      text-align: center;
+    }
+  }
+  .back-button {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #737373;
+    border-radius: 40px;
+    position: absolute;
+    top: 5px;
+    left: 31px;
+    cursor: pointer;
+    z-index: 10;
+  
+    .back-button-icon {
+      display: flex;
+      align-items: center;
+  
+      .svg-icon {
+        width: 24px;
+        height: 24px;
+  
+        svg {
+          fill: #fff; /* Change the color of the icon */
+          width: 100%;
+          height: 100%;
+          transform: scaleX(-1); /* Flip the SVG horizontally */
+        }
+      }
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+
+
+
 .settings-container {
+  margin-top: 45px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffffff;
 
   .section {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 
     h3 {
       font-size: 1.4rem;
@@ -53,26 +124,67 @@
     }
   }
 
-  .account {
-    .log-out,
-    .delete-account {
+
+    ion-button {
       width: 100%;
       padding: 15px;
       font-size: 1rem;
-      color: #333;
+      color: #fff; 
       text-align: left;
-      background: none;
       border: none;
       cursor: pointer;
       display: block;
-
-      &:hover {
-        background-color: #f9f9f9;
-      }
+  
+    }
+    .log-out{
+      --background: #000000; // Dark gray background
+      --color: #ffffff; // White text
+      font-weight: bold;
+    }
+    .delete-account{
+      --background: #8a3d3d; // Dark gray background
+      --color: #ffffff; // White text
+      font-weight: bold;
     }
 
-    .delete-account {
-      color: #d9534f;
-    }
-  }
+  
 }
+
+.radar-chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #1b1b1b;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.odor-labels {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.label {
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.label img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+

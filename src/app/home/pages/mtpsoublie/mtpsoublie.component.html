@@ -1,0 +1,18 @@
+
+  <ion-content padding>
+    <button routerLink="/home">
+      <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+        <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124h-604.774l188.084 188.084c7.992 7.992 7.992 20.947 0 28.939-4.001 3.991-9.241 5.997-14.47 5.997s-10.479-1.996-14.48-5.997l-223.009-223.009c-3.837-3.837-5.997-9.046-5.997-14.47s2.16-10.632 5.997-14.47l223.019-223.03c7.992-7.992 20.957-7.992 28.949 0 7.992 8.002 7.992 20.957 0 28.949l-188.073 188.073h604.753c11.297 0 20.466 9.159 20.466 20.466z"></path>
+      </svg>
+      <span style="color: black; font-weight: bold;">Retour</span>
+    </button>
+    <div class="forgot-password-container">
+      <div class="titre">
+      <h2>Mot de passe oublié</h2>
+      </div>
+      <ion-input [(ngModel)]="email" placeholder="Enter your email" type="email"></ion-input>
+      <ion-button expand="full" (click)="resetPassword()">Envoyer le lien </ion-button>
+      <p *ngIf="message" class="message">{{ message }}</p>
+    </div>
+  </ion-content>
+  

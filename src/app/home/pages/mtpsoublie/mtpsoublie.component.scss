@@ -1,0 +1,110 @@
+ion-content {
+  --ion-background-color: #ffffff; /* Background color */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensures the content takes up the full height of the page */
+  padding: 20px; /* Adds space around the content */
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  color: black;
+
+  svg {
+    margin-right: 5px;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(-5px);
+  }
+
+  span {
+    color: black; /* Ensures the 'Retour' text is black */
+    font-weight: bold;
+  }
+}
+
+.titre {
+  margin-top: 10px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 34px;
+    font-weight: bold;
+  }
+}
+
+.forgot-password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 200px;
+
+  ion-item {
+    --background: transparent; /* Background for input fields */
+    margin-bottom: 15px; /* Space between form items */
+    border-radius: 0px; /* No rounded corners */
+
+    ion-icon {
+      color: black; /* Color of the icons */
+    }
+
+    ion-input {
+      color: black; /* Text color */
+      --placeholder-color: #000000; /* Placeholder color */
+      font-size: 18px;
+      --border-color: transparent; /* Border color for the input field */
+      --background: transparent; /* Background color of the input field */
+
+      .native-input {
+        border-color: transparent; /* Ensure border color for native input */
+      }
+
+      .ion-valid {
+        --highlight-color-focused: #000000; /* Black highlight color for valid input */
+      }
+    }
+  }
+
+  ion-input {
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 400px;
+    color: black;
+
+    .native-input {
+      border-color: #000000; /* Black border color for input */
+    }
+
+    .ion-valid {
+      --highlight-color-focused: #000000; /* Black highlight color for valid input */
+    }
+  }
+
+  ion-button {
+    margin-top: 16px;
+    --background: #000000; /* Black background for the button */
+    --color: #ffffff; /* White text color for contrast */
+  }
+
+  .message {
+    margin-top: 16px;
+    color: #000000; /* Black color for messages */
+    --highlight-color-focused : #000000;
+  }
+}

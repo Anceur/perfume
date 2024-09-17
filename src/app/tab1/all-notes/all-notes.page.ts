@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { initializeApp } from 'firebase/app';
 import { getDatabase, onValue, ref } from "firebase/database";
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-all-notes',
   templateUrl: './all-notes.page.html',
@@ -12,6 +14,7 @@ notes :any = [];
   constructor(private router:Router) { }
 
   ngOnInit() {
+    const app = initializeApp(environment.firebaseConfig);
     const database = getDatabase();
     const starCountRef = ref(database, 'notes',);
   

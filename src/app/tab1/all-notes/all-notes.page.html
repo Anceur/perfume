@@ -1,23 +1,22 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-title>Toutes les notes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar   placeholder="Recherche par note"></ion-searchbar>
-  <div class="notes">
-    <div class="card" *ngFor="let note of notes " >
-      <ion-card style="cursor: pointer;" (click)="clicknote(note.name)" >
-        <img    class="img" alt="{{note.name}}" src ="{{note.img}}" />
-        <ion-card-content><p>
-          {{note.name}}
-        </p>
-         </ion-card-content>
+  <!-- <ion-searchbar placeholder="Recherche par note"></ion-searchbar> -->
+  
+  <!-- Grid container for notes -->
+  <div class="notes-grid">
+    <div class="note-card" *ngFor="let note of notes">
+      <ion-card style="cursor: pointer;" (click)="clicknote(note.name)">
+        <img class="img" alt="{{note.name}}" src="{{note.img}}" />
+        <ion-card-content>
+          <p>{{note.name}}</p>
+        </ion-card-content>
       </ion-card>
-    </div> 
+    </div>
   </div>
+  
 </ion-content>
-
-   
- 

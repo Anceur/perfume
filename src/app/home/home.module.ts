@@ -12,6 +12,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +22,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     ExploreContainerComponentModule,
    
   ],
-  declarations: [HomePage],
+  declarations: [HomePage,],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageModule {

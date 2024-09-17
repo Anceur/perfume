@@ -42,17 +42,19 @@ ion-button {
   --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-ion-button[color="light"] {
-  --background: #ffffff;
-  --color: #000000;
+.white-button {
+  --background: #ffffff; // White background
+  --color: #000000; // Black text
   font-weight: bold;
 }
 
-ion-button {
-  --background: #000000;
-  --color: #ffffff;
+.black-button {
+  --background: #000000; // Dark gray background
+  --color: #ffffff; // White text
   font-weight: bold;
 }
+
+
 
 ion-header {
   position: relative;
@@ -129,28 +131,31 @@ ion-header {
   --background: #f0f0f0;  
   --progress-background: #000;  
 }
-
-
-
-
-
- 
-
-
-
 .image img {
   max-width: 100%;
-    height: 50vh;
-  animation: flipIn 1s ease-in-out; /* Apply the flipIn animation */
+  margin-top: 56px;
+  height: auto;
+  opacity: 0; /* Start hidden */
+  transform: scale(0.5); /* Start smaller */
+  animation: fadeInForm 1s ease-in-out forwards; /* Add forwards to persist the final state */
+}
+@keyframes fadeInForm {
+  0% {
+    transform: scale(0.5); /* Image starts smaller */
+    opacity: 0; /* Fully transparent */
+  }
+  100% {
+    transform: scale(1); /* Full size */
+    opacity: 1; /* Fully visible */
+  }
 }
 
-@keyframes flipIn { 
-  0% { 
-    transform: rotateY(-180deg) scale(0.5); 
-    opacity: 0; 
-  } 
-  100% { 
-    transform: rotateY(0deg) scale(1); 
-    opacity: 1; 
-  } 
+.animate-on-scroll {
+  animation: fadeInForm 1s ease-in-out forwards; /* Add forwards to persist the final state */
 }
+
+
+
+
+
+

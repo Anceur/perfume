@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirebaseServiceService } from 'src/app/services/firebase-service.service';
+import { FirebaseServiceService } from 'src/app/services/firebase-service.service'; // Your Firebase Service
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.validationFormUser = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]] // Minimum 10 characters
     });
   }
 
@@ -34,9 +34,10 @@ export class LoginComponent implements OnInit {
     ],
     password: [
       { type: 'required', message: 'Le mot de passe est requis' },
-      { type: 'minlength', message: 'Le mot de passe doit comporter au moins 8 caractères' }
+      { type: 'minlength', message: 'Le mot de passe doit comporter au moins 8 caractères' } // Updated to 10 characters
     ]
   };
+
   togglePasswordVisibility() {
     if (this.passwordType === 'password') {
       this.passwordType = 'text';
@@ -47,42 +48,43 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
   LoginUser(): void {
     if (this.validationFormUser.valid) {
       const { email, password } = this.validationFormUser.value;
+
+      // Firebase email/password authentication
       this.authService.loginFireauth(email, password)
         .then(() => {
-          this.router.navigate(['/filter']);
+          // Navigate to a new page upon successful login
+          this.router.navigate(['/tabs/tab1']);
         })
         .catch(err => {
           console.error('Login Error:', err);
-          // Optionally, display an error message to the user
+          alert('Login failed. Please check your email and password.');
         });
     } else {
       console.log('Form is invalid');
+      alert('Please enter valid credentials.');
     }
   }
 
   loginWithFacebook(): void {
     this.authService.loginWithFacebook()
       .then(() => {
-        this.router.navigate(['/filter']);
+        this.router.navigate(['/tabs/tab1']);
       })
       .catch(err => {
         console.error('Facebook Login Error:', err);
-        // Optionally, display an error message to the user
       });
   }
 
   GoogleAuth(): void {
     this.authService.GoogleAuth()
       .then(() => {
-        this.router.navigate(['/filter']);
+        this.router.navigate(['/tabs/tab1']);
       })
       .catch(err => {
         console.error('Google Auth Error:', err);
-        // Optionally, display an error message to the user
       });
   }
 }

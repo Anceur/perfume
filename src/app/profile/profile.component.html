@@ -1,69 +1,54 @@
-<ion-content [fullscreen]="true">
-    <div class="settings-container">
-      <div class="section profile">
-        <h3>Profile</h3>
-        <div class="input-group">
-          <label for="first-name">First Name</label>
-          <div class="input-value">
-            Yasiannab
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="last-name">Last Name</label>
-          <div class="input-value">
-            Gahavg
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="gender">Gender</label>
-          <div class="input-value">
-            Man
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="age">Age</label>
-          <div class="input-value">
-            18
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="language">Language</label>
-          <div class="input-value">
-            <img src="assets/flags/uk.png" alt="English Flag" class="flag-icon">
-            English
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="currency">Currency</label>
-          <div class="input-value">
-            € - EUR
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
+<ion-header>
+  <ion-toolbar>
+    <button class="back-button" routerLink="/tabs/tab1">
+      <div class="back-button-icon">
+        <span class="svg-icon">
+          <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+            <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+          </svg>
+        </span>
+      </div>
+    </button>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="settings-container">
+    <div class="section profile">
+      <h3>Profile</h3>
+      <div class="input-group">
+        <label for="first-name">First Name</label>
+        <div class="input-value">
+          {{ userProfile.firstName || 'N/A' }}
+          <ion-icon name="create-outline"></ion-icon>
         </div>
       </div>
-  
-      <div class="section notification">
-        <h3>Notifications</h3>
-        <div class="input-group">
-          <label for="brand-activity">Brand Activity</label>
-          <ion-toggle checked></ion-toggle>
+      <div class="input-group">
+        <label for="last-name">Last Name</label>
+        <div class="input-value">
+          {{ userProfile.lastName || 'N/A' }}
+          <ion-icon name="create-outline"></ion-icon>
         </div>
-        <div class="input-group">
-          <label for="latest-news">Latest News</label>
-          <ion-toggle></ion-toggle>
-        </div>
-      </div>
-  
-      <div class="section account">
-        <h3>Account</h3>
-        <button class="log-out">Log Out</button>
-        <button class="delete-account">Delete My Account</button>
       </div>
     </div>
-  </ion-content>
-  
+    <div class="radar-chart-container">
+      <canvas id="radarChart"></canvas>
+      <div class="odor-labels">
+        <div class="label" style="top: 10%; left: 50%;">Citrus</div>
+        <div class="label" style="top: 50%; left: 90%;">Animalic</div>
+        <div class="label" style="top: 85%; left: 50%;">Woody</div>
+        <div class="label" style="top: 50%; left: 10%;">Green</div>
+        <div class="label" style="top: 85%; left: 10%;">Floral</div>
+        <div class="label" style="top: 85%; right: 10%;">Spicy</div>
+        <div class="label" style="top: 50%; right: 90%;">Sweet</div>
+        <div class="label" style="top: 50%; right: 50%;">Fruity</div>
+      </div>
+    </div>
+    <div class="section account">
+      <h3>Account</h3>
+      <ion-button class="log-out" (click)="logout()">Log Out</ion-button>
+      <ion-button class="delete-account" (click)="deleteAccount()">Delete My Account</ion-button>
+    </div>
+  </div>
+</ion-content>

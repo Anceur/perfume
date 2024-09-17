@@ -28,6 +28,11 @@ const routes: Routes = [
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)
       },
       {
+        path: 'all-notes',
+        loadChildren: () => import('../tab1/all-notes/all-notes.module').then( m => m.AllNotesPageModule)
+      },
+      
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

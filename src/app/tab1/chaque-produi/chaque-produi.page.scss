@@ -1,232 +1,167 @@
-ion-content {
-  --background:#fff;
-    
-  }
-  ion-toolbar{
-    --background: #fcfcfc;
-    color: #000;
-  }
-  .tout{
-    margin: -11px;
-    padding: 0;
-    
-  }
-  
-
-.backgrnd{
-  width: 100%;
-}
-
-.backgrnd img{
-  width: 100%;
-  height: auto;
-}
-
-.button {
-  display: block;
+.background-section {
   position: relative;
-  width: 56px;
-  height: 56px;
-  margin: 0;
-  overflow: hidden;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-  border: 0;
-  margin-top: -19px;
-}
 
-.button:before,
-.button:after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  inset: 7px;
+  ion-card {
+    margin-top: 0px;
+    margin-inline: 0px;
+    margin-bottom: 15px;
 
-}
-
-.button:before {
-  border: 4px solid #010101;
-  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-}
-
-.button:after {
-  border: 4px solid #8a8a8a;
-  transform: scale(1.3);
-  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  opacity: 0;
-}
-
-.button:hover:before,
-.button:focus:before {
-  opacity: 0;
-  transform: scale(0.7);
-  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.button:hover:after,
-.button:focus:after {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-}
-
-.button-box {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  fill: #0b0a0b;
-}
-
-.button-elem {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin: 17px 18px 0 18px;
-  transform: rotate(180deg);
-  fill: #0b0a0b;
-
-  
-}
-
-.button:hover .button-box,
-.button:focus .button-box {
-  transition: 0.4s;
-  transform: translateX(-56px);
-}
-
- .return{
-  position: absolute;
-  left: 0;
- }
-
- .title{
-  text-align: center;
-  font-weight: bold;
- }
-.img{
-  img{
-    display: flex; justify-content: center; align-items: center;width: 100%;height: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
-  ion-card-content{
-    text-align: center;
-    font-weight: bold;
-    text-align: center;
-    font-size: 30px;
-    color: #000;
-    height: auto;
-  //   padding: 15px;
+
+  .back-button {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #737373;
+    border-radius: 40px;
+    position: absolute;
+    top: 6px;
+    left: 13px;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+
+    .back-button-icon {
+      display: flex;
+      align-items: center;
+
+      .svg-icon {
+        width: 24px;
+        height: 24px;
+
+        svg {
+          fill: #fff; /* Change the color if needed */
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 }
 
-.text {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  border-top-right-radius: 100px 100px;
-  border-top-left-radius: 100px 100px;
-  height: 120px;
-}
-
-.text p {
-  font-size: 20px;
-  padding: 1%; /* Add padding */
-}
-
-.text h3 {
-  font-size: 30px;
-}
-/* Add additional circular button styles as needed */
-
-.parghpe{
-  text-align: center;
-  color: #000;
-  h5{
-    font-weight: bold;
-  }
+/* Content Wrapper */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  margin-top: -20%;
+  width: 100%;
+  height: 120vh;
+  background-color: black; /* Adjust color as needed */
+  border-top-left-radius: 150px 75px; /* Elliptical top-left corner */
+  border-top-right-radius: 150px 75px; /* Elliptical top-right corner */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 20px;
  
+  .nom{
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff; /* White text inside black container */
+    
+    ion-text {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin: 10px 0;
+
+   
+
+      h3 {
+        font-size: 1.5rem;
+        color: #fff;
+      }
+    }
+
+  }
+
+  .olfactory-family {
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff; /* White text inside black container */
+    
+    ion-text {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin: 10px 0;
+
+      p {
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: #fff;
+      }
+    }
+  }
+
+  /* Notes Section */
+  .notes-section {
+    margin-top: 20px;
+
+    .notes-header {
+      text-align: center;
+      margin-bottom: 15px;
+      background-color: #000; /* Black container */
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+
+      h5 {
+        font-size: 1.2rem;
+        color: #fff;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+    }
+
+    .notes-swiper {
+      swiper-container {
+        display: block;
+        width: 100%;
+      }
+
+      .note-container {
+        text-align: center;
+        background-color: #000; /* Black container */
+        padding: 10px;
+        border-radius: 10px;
+        color: #fff;
+        margin-bottom: 15px;
+
+        .circular-button {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: #fff;
+          color: #000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto;
+        }
+
+        p {
+          font-size: 0.85rem;
+          color: #fff;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  hr {
+    margin: 20px 0;
+    border-top: 1px solid #d8d8d8;
+  }
 }
-// swiper-container{
-//   display: flex ;
-//   justify-content: center;
-
-// }
-swiper-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Adjust the height as per your requirement */
-}
-
-  .swiper{
-    width: 100%;
-    display: flex ;
-    justify-content: center ;
-    overflow: hidden;
-  }
-  swiper-container{
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    display: flex;
-  }
-  
-
-
-  swiper-slide{
-    display: block;
-    right: 0;
-    left: 0;
-    justify-content: center ;
-    align-items: center;
-    text-align: center;
-    p{color: #000;
-    font-weight: bold;
-    padding: 11px;
-   text-transform: capitalize;
-  }
-  
-  }
-  .row{
-  
-    display: flex ;
-    justify-content: center ;
-}
-
-  swiper-container{
-    display: flex ;
-    justify-content: center ;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 600px;
-  }
-  .container{
-    align-items: center;
-  }
-  .circular-button-container {
-    display: flex;
-    justify-content: center;
-  }
-  .circular-button {
-    width: 50px; /* Adjust the width and height as needed to make the button circular */
-    height: 50px;
-    border-radius: 50%; 
- 
-    color: #ffffff; /* Set the text color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2); /* Add a shadow for a raised effect */
-    border: none; /* Remove any border */
-    // cursor: pointer; /* Change the cursor to a pointer on hover */
-    transition: background-color 0.3s ease; /* Add transition effect for background color change */
-    margin: auto;
-  }
-  
-  

@@ -1,6 +1,6 @@
 ion-content {
-    --background: #e8e8e8; /* Replace with your desired background color */
-  }
+  --background: #ffffff;
+}
   ion-header {
     position: relative;
     overflow: hidden;
@@ -17,6 +17,38 @@ ion-content {
       ion-title {
         color: white;
         text-align: center;
+      }
+    }
+    .back-button {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #737373;
+      border-radius: 40px;
+      position: absolute;
+      top: 5px;
+      left: 31px;
+      cursor: pointer;
+      z-index: 10;
+    
+      .back-button-icon {
+        display: flex;
+        align-items: center;
+    
+        .svg-icon {
+          width: 24px;
+          height: 24px;
+    
+          svg {
+            fill: #fff; /* Change the color of the icon */
+            width: 100%;
+            height: 100%;
+            transform: scaleX(-1); /* Flip the SVG horizontally */
+          }
+        }
       }
     }
   }
@@ -43,6 +75,7 @@ ion-content {
     display: flex;
 justify-content: space-between;
 flex-wrap: wrap;
+padding-right: 13px;
 
 }
 .card-brand {
@@ -52,10 +85,13 @@ flex-wrap: wrap;
     border-radius: 10px;
     overflow: hidden;
   }
-  ion-card{
-    border-radius: 30px;
-    --background: #fff;
-               
+  ion-card {
+    width: 100%; /* Ensure cards take up full width of their grid cell */
+    border-radius: 30px 0px 30px 0px;
+    --background: #fff;  
+    box-shadow: 0px 3px 10px #00000069;
+
+  
   img{
     width: 100%;
     object-fit: cover;

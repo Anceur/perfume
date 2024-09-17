@@ -208,6 +208,16 @@ ion-list {
     font-size: 14px;
   }
 
- 
   
+}
+
+ion-icon {
+  // Set color for all icons
+  color: black; // Default color for icons
+
+  // Set color for specific icons
+  &[name="checkmark-outline"],
+  &[name="add-outline"] {
+    color: white; // Color for these icons
+  }
 }

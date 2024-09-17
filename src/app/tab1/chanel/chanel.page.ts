@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { object } from '@angular/fire/database';
 import { ActivatedRoute, Router } from '@angular/router';
+import { initializeApp } from 'firebase/app';
 import { getDatabase, onValue, ref } from "firebase/database";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chanel',
@@ -17,6 +19,7 @@ brands :any = [];
   constructor(private router : Router ,private route : ActivatedRoute) { }
   
   ngOnInit() {
+    const app = initializeApp(environment.firebaseConfig);
     this.route.paramMap.subscribe(r => {
       this.nom = r.get('nom')
       

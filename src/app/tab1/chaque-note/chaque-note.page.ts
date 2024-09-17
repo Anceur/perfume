@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getDatabase, onValue, ref } from "firebase/database";
 import { Location } from '@angular/common';
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chaque-note',
@@ -21,6 +23,7 @@ notes :any = [];
   constructor(private router : Router ,private route : ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
+    const app = initializeApp(environment.firebaseConfig);
     this.route.paramMap.subscribe(r => {
       this.name= r.get('name')
   })

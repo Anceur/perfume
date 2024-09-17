@@ -1,5 +1,5 @@
 ion-content {
-  --background: #e8e8e8;
+  --background: #ffffff;
   
   
 }
@@ -17,6 +17,7 @@ ion-header {
     animation: wave 10s infinite linear;
 
     ion-title {
+      font-family: 'Playfair Display', serif;
       color: white;
       text-align: center;
     }
@@ -33,46 +34,27 @@ ion-header {
 }
 
 
+
 .text-btn{
+  font-family: 'Playfair Display', serif;
   display: flex;
   justify-content: space-between;
 }
  .text{
+  font-family: 'Playfair Display', serif;
   padding-left: 20px;
+  padding-top: 13px;
   ion-text{
       color: #000;
     
  }
  h5{
+  font-family: 'Playfair Display', serif;
   color: #000; 
    font-size: 19px;
    font-weight: bold;
  }
 
-}
-.button {
-
-    position: relative;
-    right: 15px;
-    margin-top: 20px;
-
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-  padding-block: 0.5rem;
-  padding-inline: 1.25rem;
-  background-color: rgb(255, 255, 255);
-
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  gap: 10px;
-  font-weight: bold;
-  border: 3px solid #ffffff4d;
-  outline: none;
-  overflow: hidden;
-  font-size: 15px;
 }
 
 .icon {
@@ -81,34 +63,79 @@ ion-header {
   transition: all 0.3s ease-in-out;
 }
 
-.button:hover {
-  transform: scale(1.05);
-  border-color: #fff9;
+.genre-icon {
+  z-index: 20;
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  left: 10px; /* Adjust position as needed */
+  width: 25px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  fill: currentColor; /* Apply the text color to the SVG */
 }
 
-.button:hover .icon {
-  transform: translate(4px);
+.genre-icon .icon {
+  width: 100%;
+  height: auto;
+  color: black;
 }
 
-.button:hover::before {
-  animation: shine 1.5s ease-out infinite;
+.button {
+  position: relative;
+  right: 15px;
+  margin-top: 20px;
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: rgb(255, 255, 255); /* Initial background color */
+  color: #000000; /* Initial text color */
+  border: 1px solid rgb(0, 0, 0); /* Initial border color */
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  overflow: hidden;
+  outline: none;
+  position: relative;
+  transition: color 0.5s cubic-bezier(0.42, 0, 0.58, 1), 
+              background-color 0.5s cubic-bezier(0.42, 0, 0.58, 1), 
+              border-color 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+  z-index: 1; /* Ensure the button content is above the pseudo-element */
 }
 
 .button::before {
   content: "";
   position: absolute;
-  width: 100px;
-  height: 100%;
-  background-image: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0) 70%
-  );
   top: 0;
-  left: -100px;
-  opacity: 0.6;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: black; /* Background color for the fill effect */
+  transition: left 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+  z-index: -1; /* Place the pseudo-element behind the button content */
 }
+
+.button:hover::before {
+  left: 0;
+}
+
+.button:hover {
+  color: white; /* Change text color to white on hover */
+  background-color: black; /* Change background color to black on hover */
+  border-color: black; /* Change border color to black on hover */
+}
+
+.button .icon {
+  transition: transform 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+  z-index: 1; /* Ensure the icon is above the pseudo-element */
+}
+
+.button:hover .icon {
+  transform: translateX(4px); /* Move icon slightly on hover */
+}
+
+
 
 @keyframes shine {
   0% {
@@ -127,12 +154,9 @@ ion-header {
 
 
 ion-card{
-  border-radius: 30px;
+  border-radius: 30px 0px 30px 0px;
   --background: #fff;  
-  border: 0.1px solid #000;
-  box-shadow: 0px 1px 5px black;
-
- 
+  box-shadow: 0px 3px 10px #00000069;
 }
 
 .row {
@@ -185,10 +209,13 @@ ion-card-content {
 }
 
 ion-card-content p {
+  font-family: 'Playfair Display', serif;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+
 
 /* src/app/app.component.scss */
 
@@ -413,4 +440,3 @@ ion-card-content p {
   color: #999;
   pointer-events: none;
 }
-

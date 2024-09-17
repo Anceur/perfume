@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -27,6 +27,11 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./home/pages/register/register.module').then( m => m.RegisterModule)
   },
+  {
+    path: 'mtpsoublie',
+    loadChildren: () => import('./home/pages/mtpsoublie/mtpsoublie.module').then( m => m.MtpsoublieModule)
+  },
+    
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfileModule)
