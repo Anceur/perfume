@@ -1,7 +1,6 @@
-
 .swiper-container {
   width: 100%;
-  height: 90%;
+  height: 85vh; /* Adjusted height for responsiveness */
 }
 
 .swiper-slide {
@@ -19,20 +18,25 @@
 }
 
 ion-content {
-  --background: #ffffff; 
-    color: #000;
-    text-align: center;
-  
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff;
+  color: #000;
+  text-align: center;
 }
-
 
 .button-container {
   display: flex;
   justify-content: space-between;
-  padding: 27px;
+  padding: 3% 5%;
   background-color: #e8e8e8;
-  border-top-right-radius: 100px 100px;
-  border-top-left-radius: 100px 100px;
+  border-top-left-radius: 150px 75px;
+  border-top-right-radius: 150px 75px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 15vh; /* Adjusted for responsiveness */
 }
 
 ion-button {
@@ -42,47 +46,25 @@ ion-button {
   --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.white-button {
-  --background: #ffffff; // White background
-  --color: #000000; // Black text
+.white-button, .black-button {
+  height: fit-content;
   font-weight: bold;
+}
+
+.white-button {
+  --background: #ffffff;
+  --color: #000000;
 }
 
 .black-button {
-  --background: #000000; // Dark gray background
-  --color: #ffffff; // White text
-  font-weight: bold;
+  --background: #000000;
+  --color: #ffffff;
 }
-
-
 
 ion-header {
   position: relative;
   overflow: hidden;
-  border-radius: 0px 0px 80px 80px;
-  // display: none;
-  // visibility: hidden;
-
-  ion-toolbar {
-    border-radius: 0px 0px 80px 80px;
-    --background: linear-gradient(to right, #000000, #000000);
-    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
-    animation: wave 10s infinite linear;
-
-    ion-title {
-      color: white;
-      text-align: center;
-    }
-  }
-}
-
-@keyframes wave {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -100% 50%;
-  }
+  border-radius: 0 0 80px 80px;
 }
 
 .scroll-container {
@@ -107,55 +89,146 @@ ion-header {
 
 .page {
   text-align: center;
+}
 
-  h2 {
-    color: black;
-    font-weight: bold;
-  }
+.page .title {
+  font-size: 7vw; /* Scales with screen width */
+  color: black;
+  font-weight: 500;
+  padding: 5vw;
+}
 
-  p {
-    color: black;
-    font-weight: 600;
-    margin-top: 70px;
-    padding: 20px;
-    
-  }
+.page p {
+  margin-top: 2vw;
+  color: black;
+  font-weight: 600;
+  padding: 5vw;
 }
 
 .progress-bar {
-  position: absolute;
+  position: relative;
   width: 70%;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 13%;
-  --background: #f0f0f0;  
-  --progress-background: #000;  
+  bottom: 8vh;
+  --background: #f0f0f0;
+  --progress-background: #000;
 }
+
 .image img {
-  max-width: 100%;
-  margin-top: 56px;
-  height: auto;
-  opacity: 0; /* Start hidden */
-  transform: scale(0.5); /* Start smaller */
-  animation: fadeInForm 1s ease-in-out forwards; /* Add forwards to persist the final state */
+  width: 100%; /* Responsive width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.8);
+  filter: blur(10px);
 }
-@keyframes fadeInForm {
+
+.animate-image {
+  animation: easeInOutAnimation 1s ease-in-out forwards;
+}
+
+@keyframes easeInOutAnimation {
   0% {
-    transform: scale(0.5); /* Image starts smaller */
-    opacity: 0; /* Fully transparent */
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(10px);
   }
   100% {
-    transform: scale(1); /* Full size */
-    opacity: 1; /* Fully visible */
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
   }
 }
 
-.animate-on-scroll {
-  animation: fadeInForm 1s ease-in-out forwards; /* Add forwards to persist the final state */
+/* Media Queries for Responsive Design */
+
+/* iPhone SE and Small Screens */
+@media (max-width: 360px) {
+  .title {
+    font-size: 7vw;
+  }
+
+  .image img {
+    max-width: 260px;
+  }
+
+  .button-container {
+    padding: 5% 8%;
+    height: 18vh;
+  }
 }
 
+/* iPhone XR, iPhone 11, iPhone 12 */
+@media (min-width: 376px) and (max-width: 414px) {
+  .title {
+    font-size: 6vw;
+  }
 
+  .image img {
+    max-width: 350px;
+  }
 
+  .button-container {
+    padding: 11% 6%;
+    height: 16vh;
+  }
+}
 
+/* Galaxy S8+, S20, S21 */
+@media (min-width: 415px) and (max-width: 640px) {
+  .title {
+    font-size: 5vw;
+  }
 
+  .image img {
+    max-width: 400px;
+  }
 
+  .button-container {
+    padding: 3% 6%;
+    height: 15vh;
+  }
+}
+
+/* iPad and Tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .page .title {
+    font-size: 7vw;
+  }
+
+  .image img {
+    max-width: 420px;
+  }
+
+  .button-container {
+    padding: 6% 12%;
+    height: 16vh;
+  }
+
+  .page p {
+    font-size: 3vw;
+    font-weight: 300;
+  }
+
+  .white-button, .black-button {
+    font-size: 3vw;
+    height: 5vh;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 1025px) {
+  .title {
+    font-size: 3vw;
+  }
+
+  .image img {
+    max-width: 800px;
+  }
+
+  .button-container {
+    padding: 2% 4%;
+    height: 10vh;
+  }
+}

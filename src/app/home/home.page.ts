@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import Swiper from 'swiper'; // Import Swiper
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-home',
@@ -9,54 +9,50 @@ import Swiper from 'swiper'; // Import Swiper
 })
 export class HomePage implements OnInit, AfterViewInit {
   @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;
-  progressValue: number = 0; // Progress value for the ion-progress-bar
-  swiper: any; // Swiper instance
-
-  // Define the progress values for each slide
-  progressValues = [0.2, 0.5, 1]; 
+  progressValue: number = 0;
+  swiper: any;
+  activeIndex: number = 0; // Track the active slide index
 
   pages = [
     {
-      title: "Vous cherchez un parfum ?",
+      title: "Esque Vous cherchez un parfum ?",
       image: "assets/home/1.png",
       description: "Partagez qui vous êtes, ce que vous aimez ou les goûts de la personne à qui vous souhaitez offrir un parfum",
-      style:""
     },
     {
-      title: "Une sélection d'experts",
+      title: "Un panel d'experts triés sur le volet",
       image: "assets/home/2.png",
       description: "Découvrez les parfums qui vous conviennent le mieux parmi plusieurs milliers et sélectionnez ceux que vous souhaitez tester en magasin.",
-      style:""
     },
     {
-      title: "Où que tu sois",
+      title: "Tu es au bon endroit pour les parfums.",
       image: "assets/home/3.png",
       description: "Des grandes chaînes aux petits détaillants de niche, choisissez votre détaillant de parfums à proximité et trouvez la perle rare !",
-      style:""
     }
   ];
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
-    // Initial setup if needed
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     this.swiper = this.swiperContainer.nativeElement.swiper;
-    if (this.swiper) {
-      this.swiper.on('slideChange', () => {
-        this.updateProgress();
-      });
-    }
-    this.updateProgress(); // Initial progress update
+    
+    // Initialize Swiper events
+    this.swiper.on('slideChange', () => {
+      this.activeIndex = this.swiper.activeIndex; // Update the active index
+      this.updateProgress();
+    });
+
+    // Initial progress update
+    this.updateProgress();
   }
 
-  // Updates the ion-progress-bar based on the swiper's current index
   updateProgress() {
     if (this.swiper) {
-      const currentIndex = this.swiper.activeIndex; // Get the current active slide index
-      this.progressValue = this.progressValues[currentIndex] || 0; // Set progress based on the current slide
+      const currentIndex = this.swiper.activeIndex;
+      this.activeIndex = currentIndex; // Update the active index
+      this.progressValue = (currentIndex + 1) / this.pages.length; // Update progress value
     }
   }
 }

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, ref, update } from 'firebase/database';
+import { getAuth } from 'firebase/auth';  // Firebase Auth to get the current user
 import { environment } from 'src/environments/environment';
 
 interface Product {
   id: number;
   name: string;
   genre: string;
-  coeur: string;
   image: string;  // URL or path to the product's image
-  [key: string]: any;  // This allows additional properties that might exist on the product
+  [key: string]: any;  // Allows additional properties
 }
 
 @Component({
@@ -45,8 +45,7 @@ export class HommeComponent implements OnInit {
     if (searchTerm && searchTerm.trim() !== '') {
       this.filteredProducts = this.products.filter((product: Product) =>
         product.genre === 'homme' &&
-        (product.name.toLowerCase().includes(searchTerm) ||
-         (product.coeur && typeof product.coeur === 'string' && product.coeur.toLowerCase().includes(searchTerm)))
+        (product.name.toLowerCase().includes(searchTerm))
       );
     } else {
       this.filteredProducts = [];
@@ -67,9 +66,31 @@ export class HommeComponent implements OnInit {
     return this.selectedProducts.some(p => p.id === product.id);
   }
 
-  confirmSelection() {
+  // Confirm selection and save favorite perfumes to Firebase
+  async confirmSelection() {
     if (this.selectedProducts.length > 0) {
-      this.router.navigate(['/filter/choisir-note'], { state: { products: this.selectedProducts } });
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const userId = user.uid;
+        const database = getDatabase();
+        const userFavoritesRef = ref(database, `users/${userId}/favoriteProducts`);
+
+        // Save selected products (only id, name, and image)
+        const favoriteProducts = this.selectedProducts.map(product => ({
+          id: product.id,
+          name: product.name,
+          image: product.image
+        }));
+
+        await update(userFavoritesRef, {
+          favoriteProducts: favoriteProducts
+        });
+
+        // Navigate to the next page after saving the favorites
+        this.router.navigate(['/filter/choisir-note'], { state: { products: this.selectedProducts } });
+      }
     }
   }
 }

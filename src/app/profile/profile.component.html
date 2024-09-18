@@ -1,14 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <button class="back-button" routerLink="/tabs/tab1">
-      <div class="back-button-icon">
-        <span class="svg-icon">
-          <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
-            <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
-          </svg>
-        </span>
-      </div>
-    </button>
     <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -32,19 +23,9 @@
         </div>
       </div>
     </div>
-    <div class="radar-chart-container">
-      <canvas id="radarChart"></canvas>
-      <div class="odor-labels">
-        <div class="label" style="top: 10%; left: 50%;">Citrus</div>
-        <div class="label" style="top: 50%; left: 90%;">Animalic</div>
-        <div class="label" style="top: 85%; left: 50%;">Woody</div>
-        <div class="label" style="top: 50%; left: 10%;">Green</div>
-        <div class="label" style="top: 85%; left: 10%;">Floral</div>
-        <div class="label" style="top: 85%; right: 10%;">Spicy</div>
-        <div class="label" style="top: 50%; right: 90%;">Sweet</div>
-        <div class="label" style="top: 50%; right: 50%;">Fruity</div>
-      </div>
-    </div>
+
+
+
     <div class="section account">
       <h3>Account</h3>
       <ion-button class="log-out" (click)="logout()">Log Out</ion-button>

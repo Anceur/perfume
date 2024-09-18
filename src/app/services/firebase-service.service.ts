@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { getDatabase, ref, set, get, update, remove } from 'firebase/database';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +13,24 @@ export class FirebaseServiceService {
 
   constructor(
     private auth: AngularFireAuth,
-    private facebook: Facebook,
-    private router: Router
+    private router: Router,
+
   ) {}
 
-  // تسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور
+  // Sign in with email and password
   loginFireauth(email: string, password: string): Promise<any> {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  // تسجيل مستخدم جديد باستخدام البريد الإلكتروني وكلمة المرور
+  // Register new user with email and password
   registerFireauth(value: any) {
-    const fullName = `${value.firstName} ${value.lastName}`; // تخزين الاسم الكامل
+    const fullName = `${value.firstName} ${value.lastName}`; // Store full name
     return this.auth.createUserWithEmailAndPassword(value.email, value.password)
       .then(result => {
         this.SetUserData(result.user, value.firstName, value.lastName);
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          // التعامل مع الخطأ إذا كان البريد الإلكتروني مستخدم بالفعل
           console.error('The email address is already in use by another account.');
           throw new Error('The email address is already in use.');
         } else {
@@ -40,10 +40,11 @@ export class FirebaseServiceService {
       });
   }
   
-  // تسجيل الدخول باستخدام Facebook
+  
+  // Sign in with Facebook
   async loginWithFacebook() {
     try {
-      const fbLoginResponse = await this.facebook.login(['public_profile', 'email']);
+      const fbLoginResponse = await (window as any).FB.login(['public_profile', 'email']);
       const credential = firebase.auth.FacebookAuthProvider.credential(fbLoginResponse.authResponse.accessToken);
       const result = await this.auth.signInWithCredential(credential);
       this.SetUserData(result.user);
@@ -54,12 +55,12 @@ export class FirebaseServiceService {
     }
   }
 
-  // تسجيل الدخول باستخدام Google
+  // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
   }
 
-  // منطق عام لتسجيل الدخول باستخدام موفر معين
+  // General login logic with provider
   private AuthLogin(provider: firebase.auth.AuthProvider) {
     return this.auth.signInWithPopup(provider)
       .then(result => {
@@ -72,7 +73,7 @@ export class FirebaseServiceService {
       });
   }
 
-  // حفظ بيانات المستخدم في Firebase Realtime Database
+  // Save user data in Firebase Realtime Database
   private async SetUserData(user: firebase.User | null, firstName: string = 'Anonymous', lastName: string = 'Anonymous') {
     if (user) {
       const userData = {
@@ -80,9 +81,9 @@ export class FirebaseServiceService {
         email: user.email,
         firstName: firstName,
         lastName: lastName,
-        displayName: `${firstName} ${lastName}`, // حفظ الاسم الكامل
+        displayName: `${firstName} ${lastName}`, // Store full name
         photoURL: user.photoURL || null,
-        lastLogin: new Date().toISOString()
+        lastLogin: new Date().toISOString(),
       };
   
       try {
@@ -95,8 +96,15 @@ export class FirebaseServiceService {
       }
     }
   }
+
+  // Get current user
+  async getCurrentUser() {
+    const user = await this.auth.currentUser;
+    console.log(user);
+    return user;
+  }
   
-  // تحديث الجنس (النوع الاجتماعي) للمستخدم في Firebase
+  // Update user gender
   async updateUserGender(gender: string) {
     const user = await this.auth.currentUser;
 
@@ -117,7 +125,7 @@ export class FirebaseServiceService {
     }
   }
 
-  // استرجاع ملف المستخدم من قاعدة بيانات Firebase
+  // Fetch user profile
   async getUserProfile() {
     const user = await this.auth.currentUser;
 
@@ -143,7 +151,7 @@ export class FirebaseServiceService {
     }
   }
 
-  // إرسال بريد إلكتروني لإعادة تعيين كلمة المرور
+  // Send password reset email
   resetPassword(email: string) {
     return this.auth.sendPasswordResetEmail(email)
       .then(() => {
@@ -155,7 +163,7 @@ export class FirebaseServiceService {
       });
   }
 
-  // حذف بيانات المستخدم من Firebase
+  // Delete user data from Firebase
   async deleteUser(uid: string) {
     const db = getDatabase();
     const userRef = ref(db, `users/${uid}`);
@@ -168,5 +176,5 @@ export class FirebaseServiceService {
       throw error;
     }
   }
-
+  
 }

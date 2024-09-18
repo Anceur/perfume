@@ -5,18 +5,22 @@
     [spaceBetween]="10"
     class="swiper-container"
   >
-    <swiper-slide *ngFor="let page of pages">
-      <div class="page">
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>{{ page.title }} </ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <div class="image">
-          <img [src]="page.image" alt="" >
-        </div>
-        <p>{{ page.description }}</p>
-      </div>
+    <swiper-slide *ngFor="let page of pages; let i = index" [ngClass]="{'active-slide': i === activeIndex}">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <div class="page">
+              <p class="title">{{ page.title }}</p>
+              <div class="image">
+                <!-- Add class 'animate-image' dynamically to active image -->
+                <img [src]="page.image" alt="Page Image" [ngClass]="{'animate-image': i === activeIndex}" />
+              </div>
+              
+              <p>{{ page.description }}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </swiper-slide>
   </swiper-container>
 

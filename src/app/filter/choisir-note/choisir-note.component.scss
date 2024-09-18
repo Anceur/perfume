@@ -237,12 +237,9 @@ h2 {
 }
 
 /* Hide skip button if no currentNote */
-.skip-button:not(.show) {
-  display: none;
-}
+
 
 /* Styling for message when no notes */
 p {
   text-align: center;
-  margin-top: 20px;
 }

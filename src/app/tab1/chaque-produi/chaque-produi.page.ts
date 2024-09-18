@@ -24,7 +24,11 @@ products:any = [];
 notes:any = [];
 productNote :any=[];
 tete:any = [];
+isActive = false; // Track the button state
 
+toggleHeartButton() {
+  this.isActive = !this.isActive; // Toggle the state
+}
 
 
 
