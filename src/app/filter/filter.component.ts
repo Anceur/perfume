@@ -21,12 +21,7 @@ export class FilterComponent implements OnInit {
           this.router.navigate(['/filter/femme']);
         } else if (gender === 'Homme') {
           this.router.navigate(['/filter/homme']);
-        } else {
-          console.error('Invalid gender selection');
         }
       })
-      .catch(error => {
-        console.error('Error updating user gender:', error);
-      });
   }
 }

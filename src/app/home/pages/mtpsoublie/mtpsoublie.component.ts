@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { FirebaseServiceService } from 'src/app/services/firebase-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class MtpsoublieComponent {
   email: string = '';
   message: string = '';
 
-  constructor(private authService: FirebaseServiceService) { }
+  constructor(private authService: AuthService) { }
 
   resetPassword() {
     if (this.email) {

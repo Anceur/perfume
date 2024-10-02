@@ -5,8 +5,4 @@
   <string name="package_name">com.goodflower</string> <!-- Update package_name to your new package name -->
   <string name="custom_url_scheme">com.goodflower</string> <!-- Update custom_url_scheme to your new package name -->
 
-  <!-- Add these lines if you're using Facebook integration -->
-  <string name="fb_app_id">825859883024391</string>
-  <string name="fb_app_name">Good Flower</string>
-  <string name="fb_client_token">f1f71be726209bef3be0e5cab3c52410</string>
 </resources>

@@ -1,62 +1,40 @@
 ion-content {
-  --background: #ffffff; /* Light, neutral background for a premium feel */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  justify-content: flex-start; /* Align content to the top */
-  overflow-y: auto; /* Allow vertical scrolling */
-  padding: 20px;
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff; /* Set the background color for the ion-content */
 }
 
 ion-header {
+  font-family: 'Playfair Display', serif;
+  height: 90px;
   position: relative;
   overflow: hidden;
-  border-radius: 0px 0px 80px 80px;
+  border-bottom-left-radius: 200px 75px;
+  border-bottom-right-radius: 200px 75px;
 
   ion-toolbar {
-    border-radius: 0px 0px 80px 80px;
-    --background: linear-gradient(to right, #000000, #151512);
-    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
-    animation: wave 10s infinite linear;
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    justify-content: center;
+    height: 100%;
+    --background: linear-gradient(to right, #000000, #000000);
+    border-bottom-left-radius: 200px 75px;
+    border-bottom-right-radius: 200px 75px;
+    --background-size: 200% auto;
+    animation: _ngcontent-ng-c2393436788_wave 10s infinite linear;
 
     ion-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0rem;
       color: white;
-      text-align: center;
-    }
-  }
-  .back-button {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: #737373;
-    border-radius: 40px;
-    position: absolute;
-    top: 5px;
-    left: 31px;
-    cursor: pointer;
-    z-index: 10;
-  
-    .back-button-icon {
-      display: flex;
-      align-items: center;
-  
-      .svg-icon {
-        width: 24px;
-        height: 24px;
-  
-        svg {
-          fill: #fff; /* Change the color of the icon */
-          width: 100%;
-          height: 100%;
-          transform: scaleX(-1); /* Flip the SVG horizontally */
-        }
-      }
+      text-align: center; /* Center the title text */
     }
   }
 }
+
+
+
+
 // Styling the product list
 ion-list {
   margin-top: 16px;
@@ -95,27 +73,76 @@ ion-item {
  
 }
 
-@keyframes wave {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -100% 50%;
-  }
-}
 
 ion-searchbar {
-  --background: #ffffff; /* Light, neutral background for a premium feel */
-  color: black;
-  width: 100%;
-  margin-bottom: 20px;
+  border-radius: 50px;
+  --box-shadow: rgba(0, 0, 0, 0);
+  padding: 11px 11px;
+  --background:#000000;
+  --color: #ffffff; // Set input text color to black
+  // Ensure the input text color is set to black
+  input.searchbar-input {
+    color: #ffffff; // Set input text color to black
+  }
+  input.searchbar-input.sc-ion-searchbar-md {
+    border-radius: 100px;
+    background: rgb(0, 0, 0);
 }
+
+
+  // Set other colors
+  --icon-color: #ffffff; 
+  --placeholder-color: #fff; 
+}
+
+
+
+  ion-item {
+    --background: white;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    padding: 10px;
+    border-radius: 0px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; // Animation for hover effect
+
+    &:hover {
+      transform: translateY(-2px); // Slight lift effect on hover
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); // Enhance shadow on hover
+    }
+  }
+
+    ion-avatar {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    ion-label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      margin-left: 12px;
+    }
+  
+
+
+
 
 .brands {
   display: flex;
   flex-direction: column; /* Ensure groups are stacked vertically */
   gap: 20px;
   width: 100%;
+  padding-bottom: 20%;
 }
 
 .group {
@@ -124,9 +151,9 @@ ion-searchbar {
 
 .card-brand-container {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap; /* Ensure cards wrap to the next line if the screen is too small */
+  justify-content: left;
+  padding-left: 50px;
+  flex-wrap: wrap; 
 }
 
 .card-brand {
@@ -136,7 +163,7 @@ ion-searchbar {
 }
 
 ion-card {
-  width: 150px;
+  width: 120px;
   border-radius: 30px 0px 30px 0px;
   --background: #fff;
   box-shadow: 0px 3px 10px #00000069;
@@ -150,7 +177,6 @@ h2 {
   text-align: left;
   position: sticky; /* Keeps the letter visible while scrolling */
   top: 0;
-  background-color: white; /* Background color to prevent overlap with content */
   z-index: 1;
   padding: 10px;
 }

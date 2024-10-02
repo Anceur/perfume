@@ -1,58 +1,46 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
-import Swiper from 'swiper';
+import { Component } from '@angular/core';
+import { UserCheckService } from '../services/user-check.service';
+import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router'; // To handle navigation
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit, AfterViewInit {
-  @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;
-  progressValue: number = 0;
-  swiper: any;
-  activeIndex: number = 0; // Track the active slide index
+export class HomePage {
+  loading: boolean = false; // To control the spinner visibility
 
-  pages = [
-    {
-      title: "Esque Vous cherchez un parfum ?",
-      image: "assets/home/1.png",
-      description: "Partagez qui vous êtes, ce que vous aimez ou les goûts de la personne à qui vous souhaitez offrir un parfum",
-    },
-    {
-      title: "Un panel d'experts triés sur le volet",
-      image: "assets/home/2.png",
-      description: "Découvrez les parfums qui vous conviennent le mieux parmi plusieurs milliers et sélectionnez ceux que vous souhaitez tester en magasin.",
-    },
-    {
-      title: "Tu es au bon endroit pour les parfums.",
-      image: "assets/home/3.png",
-      description: "Des grandes chaînes aux petits détaillants de niche, choisissez votre détaillant de parfums à proximité et trouvez la perle rare !",
-    }
-  ];
-
-  constructor(private router: Router) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    this.swiper = this.swiperContainer.nativeElement.swiper;
-    
-    // Initialize Swiper events
-    this.swiper.on('slideChange', () => {
-      this.activeIndex = this.swiper.activeIndex; // Update the active index
-      this.updateProgress();
-    });
-
-    // Initial progress update
-    this.updateProgress();
+  constructor(
+    private authService: UserCheckService,
+    private loadingController: LoadingController,
+    private router: Router
+  ) {
+    this.checkUser();
   }
 
-  updateProgress() {
-    if (this.swiper) {
-      const currentIndex = this.swiper.activeIndex;
-      this.activeIndex = currentIndex; // Update the active index
-      this.progressValue = (currentIndex + 1) / this.pages.length; // Update progress value
+  async checkUser() {
+    // Check the authentication state
+    const user = await this.authService.checkAuthState();
+
+    if (user) {
+      // User is logged in, show the spinner and navigate to the dashboard or another page
+      this.loading = true; // Show the spinner
+
+      const loading = await this.loadingController.create({
+        message: 'Loading your dashboard...',
+        spinner: 'crescent',
+        duration: 5000 // Optional timeout for the spinner
+      });
+
+      await loading.present();
+
+      // Simulate some post-login process or navigation
+      setTimeout(() => {
+        this.loading = false; // Hide spinner
+        loading.dismiss();
+        this.router.navigate(['/tabs/tab1']); // Navigate to a different page (e.g., dashboard)
+      }, 3000); // 3-second simulated delay
     }
   }
 }

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, ref, update } from 'firebase/database';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 
 interface Product {
   id: number;
   name: string;
   genre: string;
-  coeur: string;
+  tete: string;
   image: string;
   [key: string]: any;
 }
@@ -46,8 +47,8 @@ export class FemmeComponent implements OnInit {
     if (searchTerm && searchTerm.trim() !== '') {
       this.filteredProducts = this.products.filter((product: Product) =>
         product.genre === 'femme' &&
-        (product.name.toLowerCase().includes(searchTerm) ||
-         (product.coeur && typeof product.coeur === 'string' && product.coeur.toLowerCase().includes(searchTerm)))
+        (product.name.toLowerCase().includes(searchTerm))
+        
       );
     } else {
       this.filteredProducts = [];
@@ -68,9 +69,31 @@ export class FemmeComponent implements OnInit {
     return this.selectedProducts.some(p => p.id === product.id);
   }
 
-  confirmSelection() {
+  async confirmSelection() {
     if (this.selectedProducts.length > 0) {
-      this.router.navigate(['/filter/choisir-note'], { state: { products: this.selectedProducts } });
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const userId = user.uid;
+        const database = getDatabase();
+        const userFavoritesRef = ref(database, `users/${userId}`);
+
+        // Save selected products (only id, name, and image)
+        const favoriteProducts = this.selectedProducts.map(product => ({
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          tete:product.tete
+        }));
+
+        await update(userFavoritesRef, {
+          favoriteProducts: favoriteProducts
+        });
+
+        // Navigate to the next page after saving the favorites
+        this.router.navigate(['/filter/choisir-note'], { state: { products: this.selectedProducts } });
+      }
     }
   }
 }

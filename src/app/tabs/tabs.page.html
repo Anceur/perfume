@@ -1,24 +1,23 @@
 <ion-tabs>
-
   <ion-tab-bar slot="bottom">
-
-
-    <ion-tab-button tab="tab1" routerLink="/tabs/tab1">
-      <ion-icon aria-hidden="true" name="phone-portrait" ></ion-icon>
-      <ion-label >Découvrir</ion-label>
+    <ion-tab-button tab="tab1" routerLink="/tabs/tab1" class="tab-button">
+      <ion-icon aria-hidden="true" name="phone-portrait"></ion-icon>
+      <ion-label class="text">Découvrir</ion-label>
     </ion-tab-button>
 
-
-    <ion-tab-button tab="search" routerLink="/tabs/search">
-      <ion-icon aria-hidden="true" name="search" ></ion-icon>
-      <ion-label >Search</ion-label>
+    <ion-tab-button tab="favorite" routerLink="/tabs/favorite" class="tab-button">
+      <ion-icon aria-hidden="true" name="heart"></ion-icon>
+      <ion-label>Favorites</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="profile" routerLink="/tabs/profile">
+    <ion-tab-button tab="search" routerLink="/tabs/search" class="tab-button">
+      <ion-icon aria-hidden="true" name="search"></ion-icon>
+      <ion-label class="text">Search</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" routerLink="/tabs/profile" class="tab-button">
       <ion-icon aria-hidden="true" name="person-outline"></ion-icon>
-      <ion-label >Profile</ion-label>
+      <ion-label class="text">Profile</ion-label>
     </ion-tab-button>
-
   </ion-tab-bar>
-
 </ion-tabs>

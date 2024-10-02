@@ -1,16 +1,5 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <button class="back-button"  routerLink="/tabs/tab1">
-      <div class="back-button-icon">
-        <span class="svg-icon">
-          <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
-            <path
-              d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"
-            ></path>
-          </svg>
-        </span>
-      </div>
-    </button>
     <ion-title>
       Tous les parfums
     </ion-title>
@@ -18,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="Rechercher">
+  
     <ion-searchbar placeholder="Recherche" [debounce]="1000" (ionInput)="handleInput($event); showItems()"></ion-searchbar>
     <div *ngIf="showResults">
       <ion-item lines="none" *ngFor="let product of products">
@@ -28,9 +17,9 @@
         <ion-label>{{product.name}}</ion-label>
       </ion-item>
     </div>
-  </div>
+  
 
-  <div class="card-container">
+  <div class="card-container" >
     <div *ngFor="let product of products" class="card-item">
       <ion-card (click)="clickCard(product.id)">
         <div class="genre-icon">

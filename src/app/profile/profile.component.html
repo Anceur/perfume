@@ -2,34 +2,82 @@
   <ion-toolbar>
     <ion-title>Profile</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <div class="settings-container">
+    
+    <!-- Profile Section -->
     <div class="section profile">
-      <h3>Profile</h3>
+      <h3>Information</h3>
+
+      <!-- First Name -->
       <div class="input-group">
-        <label for="first-name">First Name</label>
-        <div class="input-value">
-          {{ userProfile.firstName || 'N/A' }}
-          <ion-icon name="create-outline"></ion-icon>
+        <div class="input-container">
+          <label for="first-name">Prénom</label>
+          <div class="input-value">
+            <span *ngIf="!isEditingFirstName">{{ userProfile.firstName || 'N/A' }}</span>
+            <input class="text" *ngIf="isEditingFirstName" [(ngModel)]="userProfile.firstName" type="text" />
+          </div>
         </div>
       </div>
+
+      <!-- Last Name -->
       <div class="input-group">
-        <label for="last-name">Last Name</label>
-        <div class="input-value">
-          {{ userProfile.lastName || 'N/A' }}
-          <ion-icon name="create-outline"></ion-icon>
+        <div class="input-container">
+          <label for="last-name">Nom de famille</label>
+          <div class="input-value">
+            <span *ngIf="!isEditingLastName">{{ userProfile.lastName || 'N/A' }}</span>
+            <input class="text" *ngIf="isEditingLastName" [(ngModel)]="userProfile.lastName" type="text" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <div class="input-container">
+          <label for="email">Email</label>
+          <div class="input-value">
+            <span *ngIf="!isEditingEmail">{{ userProfile.email || 'N/A' }}</span>
+            <input class="text" *ngIf="isEditingEmail" [(ngModel)]="userProfile.email" type="email" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="input-group">
+        <div class="input-container">
+          <label for="gender">Genre</label>
+          <div class="input-value">
+            <span *ngIf="!isEditingGender">{{ userProfile.gender || 'N/A' }}</span>
+            <input class="text" *ngIf="isEditingGender" [(ngModel)]="userProfile.gender" type="text" />
+          </div>
         </div>
       </div>
     </div>
 
-
-
-    <div class="section account">
-      <h3>Account</h3>
-      <ion-button class="log-out" (click)="logout()">Log Out</ion-button>
-      <ion-button class="delete-account" (click)="deleteAccount()">Delete My Account</ion-button>
+    <!-- Radar Chart Section -->
+    <div class="section-div">
+      <h3>Votre Profil D'odeurs</h3>
+      <div class="section-chart">
+        <div class="chart-container">
+          <!-- Background image -->
+          <img src="../../assets/profile/chart.png" alt="Radar Background" class="chart-background">
+          <!-- Canvas for Radar Chart -->
+          <canvas id="likesRadarChart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Account Section -->
+    <div class="section-account">
+      <h3>Compte</h3>
+      <div class="account">
+        <a class="log-out" (click)="logout()">Déconnecter</a>
+      </div>
+      <div class="account">
+        <a class="delete-account" (click)="deleteAccount()">Supprimer mon compte</a>
+      </div>
     </div>
   </div>
 </ion-content>

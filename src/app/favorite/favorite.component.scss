@@ -1,0 +1,127 @@
+ion-content {
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff; /* Set the background color for the ion-content */
+}
+
+ion-header {
+  font-family: 'Playfair Display', serif;
+  height: 90px;
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 200px 75px;
+  border-bottom-right-radius: 200px 75px;
+
+  ion-toolbar {
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    justify-content: center;
+    height: 100%;
+    --background: linear-gradient(to right, #000000, #000000);
+    border-bottom-left-radius: 200px 75px;
+    border-bottom-right-radius: 200px 75px;
+    --background-size: 200% auto;
+    animation: _ngcontent-ng-c2393436788_wave 10s infinite linear;
+
+    ion-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0rem;
+      color: white;
+      text-align: center; /* Center the title text */
+    }
+  }
+}
+
+
+
+
+  .ion-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  
+
+  .row {
+    display: flex;
+    justify-content: space-between; /* Ensure space between cards */
+    flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+    gap: 20px; /* Add some gap between cards */
+    padding-bottom: 20%;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
+    width: 100%;
+    margin-top: 13px;
+  }
+  ion-img{
+    width: 100%; /* Make the image take full width of the card */
+    object-fit: cover; /* Ensure the image covers the space without stretching */
+    border-bottom: 1px solid #ccc; 
+  }
+  
+  ion-card {
+    width: calc(40% - 10px); /* Two cards per row with 10px space between */
+    margin-bottom: 20px;
+    border-radius: 30px 0px 30px 0px;
+    --background: #fff;
+    box-shadow: 0px 3px 10px #00000069;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .genre-icon {
+    z-index: 20;
+    position: absolute;
+    top: 10px; /* Adjust position as needed */
+    left: 10px; /* Adjust position as needed */
+    width: 25px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    fill: currentColor; /* Apply the text color to the SVG */
+  }
+  
+  .genre-icon .icon {
+    width: 100%;
+    height: auto;
+    color: black;
+  }
+  
+  
+  ion-card-content {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    color: #000;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  // التصميم لعرض العطور في الشبكة (Responsive)
+  @media (min-width: 768px) {
+    ion-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  
+    .ion-card {
+      margin: 0;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    ion-content {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  

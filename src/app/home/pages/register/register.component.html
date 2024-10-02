@@ -1,4 +1,7 @@
-<ion-content>
+<ion-content [fullscreen]="true">
+
+  
+  
   <button routerLink="/home">
     <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
       <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
@@ -58,10 +61,10 @@
           </ion-note>
         </ion-item>
 
-        <ion-item lines="none" class="terms-checkbox">
+        <ion-item lines="none" class="terms-checkbox" style="margin-top: 10px;">
           <ion-checkbox formControlName="terms" slot="start" class="box"></ion-checkbox>
           <ion-label>
-            En vous inscrivant, vous acceptez les <a href="#">Conditions</a> et la <a href="#">Politique de confidentialité</a>.
+            En vous inscrivant, vous acceptez les <a href="https://www.freeprivacypolicy.com/live/7cc5c20e-2e5d-42c2-9d8f-e76740f31c16">Conditions</a> et la <a href="https://www.freeprivacypolicy.com/live/7cc5c20e-2e5d-42c2-9d8f-e76740f31c16">Politique de confidentialité</a>.
           </ion-label>
         </ion-item>
         <ion-note color="danger" *ngIf="registerForm.get('terms')?.invalid && registerForm.get('terms')?.touched">
@@ -71,7 +74,7 @@
         <ion-item lines="none" class="newsletter-checkbox">
           <ion-checkbox formControlName="newsletter" slot="start" class="box"></ion-checkbox>
           <ion-label>
-            Je souhaite recevoir les dernières nouvelles et les meilleurs prix pour mes parfums préférés par e-mail.
+            Je veux recevoir par e-mail actus et promos de mes parfums.
           </ion-label>
         </ion-item>
         

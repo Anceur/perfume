@@ -2,57 +2,52 @@
   <!-- Background Image Section -->
   <div class="background-section">
     <ion-card>
-      <img src="{{ product.imageback }}" alt="{{ product.imageback }}" />
+      <!-- Show skeleton animation until image is fetched -->
+      <ion-skeleton-text *ngIf="skeletonShow" animated="true" style="height: 400px; width: 100%;"></ion-skeleton-text>
+    
+      <!-- Image will be displayed once the skeleton is hidden -->
+      <ng-container *ngIf="!skeletonShow">
+        <img [src]="product?.imageback" [alt]="product?.imageback" />
+      </ng-container>
     </ion-card>
-    <!-- (click)="goBack()" -->
-    <button class="back-button"  routerLink="/tabs/tab1">
+    
+    
+       
+    <button class="back-button" routerLink="/tabs/tab1">
       <div class="back-button-icon">
         <span class="svg-icon">
           <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
-            <path
-              d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"
-            ></path>
+            <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
           </svg>
         </span>
       </div>
     </button>
-    <button class="heart-button" [ngClass]="{'active': isActive}" (click)="toggleHeartButton()" >
+    <button class="heart-button" (click)="toggleLike(product.id)">
       <div class="heart-button-icon">
         <span class="svg-icon">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            <path  [attr.fill]="liked ? 'red' : 'none'" 
+                   [attr.stroke]="liked ? 'red' : 'white'" 
+                   d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
           </svg>
         </span>
       </div>
     </button>
-    
-    
   </div>
 
   <div class="content-wrapper">
     <!-- Olfactory Family Section -->
-     <div class="nom">
-      <ion-text>
-        <h3 style="font-size: 2.5rem;">{{product.name}}</h3>
+    <div class="nom">
+      <ion-text *ngIf="product" >
+        <h3 style="font-size: 2.5rem;">{{ product.name }}</h3>
       </ion-text>
-     </div>
+    </div>
     <div class="olfactory-family">
-      <ion-text>
+      <ion-text *ngIf="product">
         <p>Famille olfactive</p>
         <h3>{{ product.Famille }}</h3>
       </ion-text>
     </div>
-
-    <!-- Radar Chart Section -->
-    <!-- <div class="radar-chart">
-      <div style="position: relative; height: 400px; width: 400px;">
-        <canvas baseChart
-          [data]="radarChartData"
-          [options]="radarChartOptions"
-          [type]="'radar'">
-        </canvas>
-      </div>
-    </div> -->
 
     <!-- Notes de Tête Section -->
     <div class="notes-section">
@@ -62,12 +57,14 @@
       </div>
       <div class="notes-swiper">
         <swiper-container slides-per-view="3" speed="500" loop="false" css-mode="true">
-          <swiper-slide *ngFor="let productNoteItem of product.tete">
-            <div class="note-container">
+          <swiper-wrapper>
+          <swiper-slide *ngFor="let productNoteItem of product?.tete">
+            <div id="note-container">
               <div class="circular-button">{{ productNoteItem.t1 }}</div>
               <p>{{ productNoteItem.one }}</p>
             </div>
           </swiper-slide>
+        </swiper-wrapper>
         </swiper-container>
       </div>
     </div>
@@ -82,32 +79,36 @@
       </div>
       <div class="notes-swiper">
         <swiper-container slides-per-view="3" speed="500" loop="false" css-mode="true">
-          <swiper-slide *ngFor="let coeurNote of product.coeur">
-            <div class="note-container">
+          <swiper-wrapper>
+          <swiper-slide *ngFor="let coeurNote of product?.coeur">
+            <div id="note-container">
               <div class="circular-button">{{ coeurNote.c1 }}</div>
               <p>{{ coeurNote.cone }}</p>
             </div>
           </swiper-slide>
+        </swiper-wrapper>
         </swiper-container>
       </div>
     </div>
 
     <hr />
 
-    <!-- Notes de Base Section -->
+    <!-- Notes de Fond Section -->
     <div class="notes-section">
       <div class="notes-header">
-        <h5>Notes de base</h5>
-        <p>De 1h à 24h</p>
+        <h5>Notes de fond</h5>
+        <p>De 15mn à 4h</p>
       </div>
       <div class="notes-swiper">
         <swiper-container slides-per-view="3" speed="500" loop="false" css-mode="true">
-          <swiper-slide *ngFor="let fondNote of product.fond">
-            <div class="note-container">
+        <swiper-wrapper>
+          <swiper-slide *ngFor="let fondNote of product?.fond">
+            <div id="note-container">
               <div class="circular-button">{{ fondNote.f1 }}</div>
               <p>{{ fondNote.fone }}</p>
             </div>
           </swiper-slide>
+        </swiper-wrapper>
         </swiper-container>
       </div>
     </div>

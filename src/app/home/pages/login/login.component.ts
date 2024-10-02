@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirebaseServiceService } from 'src/app/services/firebase-service.service'; // Your Firebase Service
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +12,19 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   passwordType: string = 'password';
   passwordToggleIcon: string = 'eye-outline';
-
   validationFormUser!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: FirebaseServiceService,
-    private router: Router
+    private authService: AuthService,
+    private router: Router,
+    private toastController: ToastController
   ) { }
 
   ngOnInit(): void {
     this.validationFormUser = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]] // Minimum 10 characters
+      password: ['', [Validators.required, Validators.minLength(8)]] // تأكد من طول كلمة المرور الأدنى
     });
   }
 
@@ -34,57 +35,40 @@ export class LoginComponent implements OnInit {
     ],
     password: [
       { type: 'required', message: 'Le mot de passe est requis' },
-      { type: 'minlength', message: 'Le mot de passe doit comporter au moins 8 caractères' } // Updated to 10 characters
+      { type: 'minlength', message: 'Le mot de passe doit comporter au moins 8 caractères' }
     ]
   };
 
   togglePasswordVisibility() {
-    if (this.passwordType === 'password') {
-      this.passwordType = 'text';
-      this.passwordToggleIcon = 'eye-off-outline';
-    } else {
-      this.passwordType = 'password';
-      this.passwordToggleIcon = 'eye-outline';
-    }
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordToggleIcon = this.passwordType === 'password' ? 'eye-outline' : 'eye-off-outline';
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000, // Duration in milliseconds
+      position: 'bottom', // Position of the toast
+      color: 'danger' // Change color to 'danger' for error messages
+    });
+    await toast.present();
   }
 
   LoginUser(): void {
     if (this.validationFormUser.valid) {
       const { email, password } = this.validationFormUser.value;
 
-      // Firebase email/password authentication
+      // Log in using email and password
       this.authService.loginFireauth(email, password)
         .then(() => {
-          // Navigate to a new page upon successful login
           this.router.navigate(['/tabs/tab1']);
         })
-        .catch(err => {
-          console.error('Login Error:', err);
-          alert('Login failed. Please check your email and password.');
+        .catch(() => {
+          this.presentToast('Échec de la connexion. Veuillez vérifier votre adresse e-mail et votre mot de passe.');
         });
     } else {
-      console.log('Form is invalid');
-      alert('Please enter valid credentials.');
+      this.presentToast('Veuillez entrer des informations valides.');
     }
   }
 
-  loginWithFacebook(): void {
-    this.authService.loginWithFacebook()
-      .then(() => {
-        this.router.navigate(['/tabs/tab1']);
-      })
-      .catch(err => {
-        console.error('Facebook Login Error:', err);
-      });
-  }
-
-  GoogleAuth(): void {
-    this.authService.GoogleAuth()
-      .then(() => {
-        this.router.navigate(['/tabs/tab1']);
-      })
-      .catch(err => {
-        console.error('Google Auth Error:', err);
-      });
-  }
 }

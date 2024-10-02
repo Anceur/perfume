@@ -8,7 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
+
 
 
 
@@ -28,10 +28,7 @@ import { Facebook } from '@awesome-cordova-plugins/facebook/ngx';
     FormsModule,
    
   ],
-  providers: [
-    Facebook,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
+ 
   bootstrap: [AppComponent],
 })
 export class AppModule {}

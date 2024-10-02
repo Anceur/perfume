@@ -15,10 +15,7 @@ const routes: Routes = [
         path: 'tab2',
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       },
-      {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-      },
+  
       {
         path: 'search',
         loadChildren: () => import('../search/search.module').then(m => m.SearchModule)
@@ -30,6 +27,10 @@ const routes: Routes = [
       {
         path: 'all-notes',
         loadChildren: () => import('../tab1/all-notes/all-notes.module').then( m => m.AllNotesPageModule)
+      },
+      {
+        path:'favorite',
+        loadChildren:()=>import('../favorite/favorite.module').then(m => m.FavoriteModule)
       },
       
       {

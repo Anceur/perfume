@@ -1,119 +1,106 @@
 ion-content {
-    --ion-background-color: #ffffff;
-  
-    .register-header {
-      text-align: center;
-      padding: 20px;
-  
-      h1 {
-        font-size: 28px;
-        font-weight: bold;
+  --ion-background-color: #ffffff;
+
+  .register-header {
+    text-align: center;
+    padding: 20px;
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    p {
+      font-size: 12px;
+      color: #888888;
+      margin-top: 10px;
+    }
+  }
+  button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      font-size: 14px;
+      color: black;
+    
+      svg {
+        margin-right: 5px;
+        transition: transform 0.2s ease;
+      }
+    
+      &:hover svg {
+        transform: translateX(-5px);
+      }
+    }
+
+  .register-form {
+    ion-item {
+      --highlight-color-focused: #000000;
+      --background: #ffffff;
+      --border-color: #000000;
+
+      ion-input {
+        --padding-start: 0;
+        font-size: 16px;
+        color: #000000;
+        padding: 10px 0;
+      }
+
+      ion-icon {
+        color: #888888;
+      }
+
+      ion-label {
+        font-size: 10px;
         color: #000000;
       }
-  
+      ion-checkbox {
+        --checkbox-background-checked: #000000;
+      }
+      
+      ion-checkbox::part(container) {
+        border: 2px solid #000000;
+      }
+      
+      
+    }
+
+    .register-btn {
+      margin-top: 30px;
+
+      ion-button {
+        --background: #000000;
+        --border-radius: 5px;
+        --color: #ffffff;
+        font-weight: bold;
+      }
+    }
+
+    .account-link {
+      text-align: center;
+      margin-top: 20px;
+
       p {
         font-size: 14px;
-        color: #888888;
-        margin-top: 10px;
-      }
-    }
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        font-size: 14px;
-        color: black;
-      
-        svg {
-          margin-right: 5px;
-          transition: transform 0.2s ease;
-        }
-      
-        &:hover svg {
-          transform: translateX(-5px);
-        }
-      }
-  
-    .register-form {
-      ion-item {
-        --highlight-color-focused: #000000;
-        --background: #ffffff;
-        --border-color: #000000;
-        margin-top: 15px;
-  
-        ion-input {
-          --padding-start: 0;
-          font-size: 16px;
-          color: #000000;
-          padding: 10px 0;
-        }
-  
-        ion-icon {
-          color: #888888;
-        }
-  
-        ion-label {
-          font-size: 14px;
-          color: #888888;
-        }
-        ion-checkbox {
-          --checkbox-background-checked: #ffffff;
-        }
-        
-        ion-checkbox::part(container) {
-          border-radius: 6px;
-          border: 2px solid #ffffff;
-        }
-        
-        
-      }
-  
-      .register-btn {
-        margin-top: 30px;
-  
-        ion-button {
-          --background: #000000;
-          --border-radius: 5px;
-          --color: #ffffff;
-          font-weight: bold;
-        }
-      }
-  
-      .account-link {
-        text-align: center;
-        margin-top: 20px;
-  
-        p {
-          font-size: 14px;
-          color: #000000;
-          font-weight: bold;
-        }
-        &:hover {
-          transform: scale(1.05); /* Zooms the element by 5% */
-          color: #252525; /* Change text color on hover */
-        }
+        color: #000000;
+        font-weight: bold;
       }
     }
   }
-  .terms-checkbox, .newsletter-checkbox {
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 8px; /* Optional: Rounded corners */
-    padding: 10px; /* Adjust padding as needed */
-    margin-bottom: 10px; /* Space between items */
-    background-color: #f9f9f9; /* Optional: Background color */
-  }
+}
+.terms-checkbox, .newsletter-checkbox {
+  border: 1px solid #ffffff; /* Border color */
+  border-radius: 8px; /* Optional: Rounded corners */
+  margin-top: 10px;
+}
+
+
   
-  .terms-checkbox ion-label, .newsletter-checkbox ion-label {
-    margin-left: 10px; /* Space between checkbox and label */
-  }
-  
-  
-    
-  
-  
-  
-  
+
+
+

@@ -9,7 +9,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 
 
@@ -19,7 +18,6 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    ExploreContainerComponentModule,
    
   ],
   declarations: [HomePage,],

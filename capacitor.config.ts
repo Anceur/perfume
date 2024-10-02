@@ -24,10 +24,7 @@ const config: CapacitorConfig = {
       layoutName: "launch_screen",
       useDialog: true,
     },
-    Facebook: {
-      appId: "825859883024391",
-      appName: "Good Flower",
-    },
+
   },
 };
 

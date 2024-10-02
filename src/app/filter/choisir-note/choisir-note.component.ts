@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getDatabase, onValue, ref, push } from 'firebase/database';
+import { getDatabase, onValue, ref, push, set } from 'firebase/database'; // Import 'set' for structured data
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { FirebaseServiceService } from 'src/app/services/firebase-service.service'; 
@@ -26,7 +26,7 @@ export class ChoisirNoteComponent implements OnInit {
     onValue(notesRef, (snapshot) => {
       const data = snapshot.val();
       this.famillenotes = Object.values(data);
-      this.showNextNote();  // Show the first note
+      this.showNextNote(); 
     });
   }
 
@@ -34,35 +34,42 @@ export class ChoisirNoteComponent implements OnInit {
     if (this.currentNoteIndex < this.famillenotes.length) {
       this.currentNote = this.famillenotes[this.currentNoteIndex];
     } else {
-      this.currentNote = null;  // All notes have been shown, redirect after the last one
-      this.router.navigate(['/tabs/tab1']);  // Redirect to '/tabs/tab1' when all notes are done
+      this.currentNote = null;  
+      this.router.navigate(['/tabs/tab1']);  
     }
   }
+async onChoiceMade(choice: string) {
+  const user = await this.authService.getCurrentUser();
 
-  async onChoiceMade(choice: string) {
-    const user = await this.authService.getCurrentUser();
-  
-    if (user) {
-      const db = getDatabase();
-  
-      try {
+  if (user) {
+    const db = getDatabase();
+
+    try {
+      if (this.currentNote && this.currentNote.name) {
+        let dataValue;
+
         if (choice === 'like') {
-          await push(ref(db, `users/${user.uid}/likes`), this.currentNote);
+          dataValue = 5;
         } else if (choice === 'dislike') {
-          await push(ref(db, `users/${user.uid}/dislikes`), this.currentNote);
+          dataValue = 2;
         } else if (choice === 'skip') {
-          // Handle skip action if needed
-          console.log('User skipped this note');
+          this.famillenotes.fill(2);
         }
-  
-        // Update currentNoteIndex and show the next note
+
+      
+        const noteData = {
+          family: this.currentNote.name,  
+          data: dataValue 
+        };
+
+        await push(ref(db, `users/${user.uid}/likes`), noteData);
+
+
         this.currentNoteIndex++;
-        this.showNextNote();  // Display next note after the choice is made
-      } catch (error) {
-        console.error('Error updating user choice:', error);
+        this.showNextNote();  
+      } 
+    } catch  (error) {
       }
-    } else {
-      console.log('No user is signed in');
-    }
-  }
+    } 
+  }  
 }

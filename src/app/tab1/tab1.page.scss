@@ -1,38 +1,82 @@
 ion-content {
-  --background: #ffffff;
-  
-  
+  height: 110vh;
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff; /* Set the background color for the ion-content */
 }
+
 ion-header {
+  font-family: 'Playfair Display', serif;
+  height: 90px;
   position: relative;
   overflow: hidden;
-  border-radius: 0px 0px 80px 80px;
-  // display: none;
-  // visibility: hidden;
+  border-bottom-left-radius: 200px 75px;
+  border-bottom-right-radius: 200px 75px;
 
   ion-toolbar {
-    border-radius: 0px 0px 80px 80px;
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    justify-content: center;
+    height: 100%;
     --background: linear-gradient(to right, #000000, #000000);
-    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
-    animation: wave 10s infinite linear;
+    border-bottom-left-radius: 200px 75px;
+    border-bottom-right-radius: 200px 75px;
+    --background-size: 200% auto;
+    animation: _ngcontent-ng-c2393436788_wave 10s infinite linear;
 
     ion-title {
       font-family: 'Playfair Display', serif;
+      font-size: 1.0rem;
       color: white;
-      text-align: center;
+      text-align: center; /* Center the title text */
     }
   }
 }
 
-@keyframes wave {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -100% 50%;
-  }
+
+
+
+.skeleton-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.skeleton-card {
+  width: 100%;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 150px;
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.skeleton-text {
+  height: 15px;
+  width: 80%;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #f3f3f3;
+  }
+  50% {
+    background-color: #ecebeb;
+  }
+  100% {
+    background-color: #f3f3f3;
+  }
+}
 
 
 .text-btn{
@@ -135,30 +179,14 @@ ion-header {
   transform: translateX(4px); /* Move icon slightly on hover */
 }
 
-
-
-@keyframes shine {
-  0% {
-    left: -100px;
-  }
-
-  60% {
-    left: 100%;
-  }
-
-  to {
-    left: 100%;
-  }
+.custom-spinner {
+  font-size: 80px; /* Adjust the spinner size */
+  transform: scale(3); /* Further scale up the spinner */
+  color: #ffffff; /* Optional: Change the color */
 }
-
-
-
-ion-card{
-  border-radius: 30px 0px 30px 0px;
-  --background: #fff;  
-  box-shadow: 0px 3px 10px #00000069;
+.logo{
+  width: 220px;
 }
-
 .row {
   display: flex;
   flex-direction: column; /* Adjust if necessary */
@@ -170,10 +198,19 @@ ion-card{
   flex-direction: column; /* Adjust if necessary */
   align-items: center;
 }
+
+.card-brand{
+width: 85%;
+}
+.card-brand{
+  width: 85%;
+}
+  
 .notes{
   display: flex;
   flex-direction: column; /* Adjust if necessary */
   align-items: center;
+  padding-bottom: 20
 }
 
 
@@ -188,22 +225,56 @@ swiper-slide {
   align-items: center;
 }
 
-.card {
-  max-width: 300px; /* Adjust the maximum width as per your design */
-  margin: 0 auto;
-  overflow: hidden;
+.card-container {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 50%); /* Two equal columns */
+  gap: 0px; /* Adjust gap between cards */
 }
 
-.img {
+.card-item {
+  display: flex;
+  justify-content: center; /* Center card items horizontally */
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.genre-icon {
+  z-index: 20;
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  left: 10px; /* Adjust position as needed */
+  width: 25px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  fill: currentColor; /* Apply the text color to the SVG */
+  color: black;
+}
+
+.genre-icon .icon {
   width: 100%;
   height: auto;
-  border-bottom: 1px solid #ccc; /* Optional: Add a border at the bottom of the image */
+}
+ion-img{
+  width: 100%; /* Make the image take full width of the card */
+  height: 25vh;
+  object-fit: cover; /* Ensure the image covers the space without stretching */
+  border-bottom: 1px solid #ccc; 
+}
+
+ion-card {
+  width: fit-content; /* Ensure cards take up full width of their grid cell */
+  border-radius: 30px 0px 30px 0px;
+  --background: #fff;  
+  box-shadow: 0px 3px 10px #00000069;
 }
 
 ion-card-content {
   width: 100%;
   text-align: center;
-  padding: 15px;
+  padding: 12px;
   color: #000;
   font-weight: bold;
 }
@@ -214,11 +285,6 @@ ion-card-content p {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-
-
-/* src/app/app.component.scss */
-
 /* Media query for iPhone SE */
 @media screen and (max-width: 375px) {
   .button {
@@ -245,9 +311,11 @@ ion-card-content p {
     font-size: 16px;
   }
 
-  .brands,
+  .brands{
+       padding: 5% 0;
+  }
   .notes {
-    padding: 5% 0;
+    padding-bottom: 20%;
   }
 }
 
@@ -259,15 +327,6 @@ ion-card-content p {
     font-size: 14px;
   }
 
-  ion-card-content {
-    font-size: 12px;
-    padding: 9px;
-    height: 43px;
-  }
-
-  ion-card-content p {
-    font-size: 12px;
-  }
 
   .text {
     margin-left: 10px;
@@ -278,10 +337,12 @@ ion-card-content p {
     font-size: 18px;
   }
 
-  .brands,
-  .notes {
+  .brands{
     padding: 5% 0;
-  }
+}
+.notes {
+ padding-bottom: 20%;
+}
 }
 
 /* Media query for iPhone 12 Mini, iPhone 13 Mini, iPhone 14 Mini (if exists) */
@@ -306,7 +367,7 @@ ion-card-content p {
   }
 
   .notes {
-    padding: 5% 0;
+    padding-bottom: 20%;
   }
 }
 
@@ -333,7 +394,7 @@ ion-card-content p {
   }
 
   .notes {
-    padding: 5% 0;
+    padding-bottom: 20%;
   }
 }
 
@@ -358,7 +419,7 @@ ion-card-content p {
   }
 
   .notes {
-    padding: 5% 0;
+    padding-bottom: 20%;
   }
 }
 
@@ -384,59 +445,6 @@ ion-card-content p {
   }
 
   .notes {
-    padding: 5% 0;
+    padding-bottom: 20%;
   }
-}
-
-
-
-/* Additional styling for Swiper pagination */
-.swiper-pagination {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-
-  .swiper-pagination-bullet {
-    background-color: #007aff; /* Change the color of pagination bullets */
-    width: 8px;
-    height: 8px;
-    display: inline-block;
-    margin: 0 5px;
-    border-radius: 50%;
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: #fff; /* Change the color of active pagination bullet */
-  }
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.pagination a {
-  color: #333;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.pagination a:hover {
-  background-color: #ddd;
-}
-
-.pagination .active {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.pagination .disabled {
-  color: #999;
-  pointer-events: none;
 }

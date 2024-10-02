@@ -1,70 +1,59 @@
 ion-content {
-    --background: #ffffff;  /* Replace with your desired background color */
-  }
-  ion-header {
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff; /* Set the background color for the ion-content */
+}
+
+ion-header {
+  font-family: 'Playfair Display', serif;
+  height: 90px;
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 200px 75px;
+  border-bottom-right-radius: 200px 75px;
+
+  ion-toolbar {
+    display: flex;
+    /* align-items: center; */
     position: relative;
-    overflow: hidden;
-    border-radius: 0px 0px 80px 80px;
-    // display: none;
-    // visibility: hidden;
-  
-    ion-toolbar {
-      border-radius: 0px 0px 80px 80px;
-      --background: linear-gradient(to right, #000000, #000000);
-      --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
-      animation: wave 10s infinite linear;
-  
-      ion-title {
-        font-family: 'Playfair Display', serif;
-        color: white;
-        text-align: center;
-      }
-    }
-    .back-button {
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      background-color: #737373;
-      border-radius: 40px;
-      position: absolute;
-      top: 5px;
-      left: 31px;
-      cursor: pointer;
-      z-index: 10;
-    
-      .back-button-icon {
-        display: flex;
-        align-items: center;
-    
-        .svg-icon {
-          width: 24px;
-          height: 24px;
-    
-          svg {
-            fill: #fff; /* Change the color of the icon */
-            width: 100%;
-            height: 100%;
-            transform: scaleX(-1); /* Flip the SVG horizontally */
-          }
-        }
-      }
+    justify-content: center;
+    height: 100%;
+    --background: linear-gradient(to right, #000000, #000000);
+    border-bottom-left-radius: 200px 75px;
+    border-bottom-right-radius: 200px 75px;
+    --background-size: 200% auto;
+    animation: _ngcontent-ng-c2393436788_wave 10s infinite linear;
+
+    ion-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: white;
+      text-align: center; /* Center the title text */
     }
   }
-  
-  @keyframes wave {
-    0% {
-      background-position: 0% 50%;
-    }
-    100% {
-      background-position: -100% 50%;
-    }
-  }
-  
+}
 
 
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.genre-icon {
+  z-index: 20;
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  left: 10px; /* Adjust position as needed */
+  width: 25px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  fill: currentColor; /* Apply the text color to the SVG */
+}
+
+.genre-icon .icon {
+  width: 100%;
+  height: auto;
+  color: black;
+}
  .text{
   text-align: center;
   font-weight: bold;
@@ -87,6 +76,7 @@ ion-content {
     flex-wrap: wrap;
     justify-content: center; /* Center the cards */
     width: 100%;
+    padding-bottom: 20%;
   }
   
   ion-card {

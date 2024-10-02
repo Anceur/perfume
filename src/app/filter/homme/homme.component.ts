@@ -9,6 +9,7 @@ interface Product {
   id: number;
   name: string;
   genre: string;
+  tete: string;   // Top notes
   image: string;  // URL or path to the product's image
   [key: string]: any;  // Allows additional properties
 }
@@ -75,13 +76,14 @@ export class HommeComponent implements OnInit {
       if (user) {
         const userId = user.uid;
         const database = getDatabase();
-        const userFavoritesRef = ref(database, `users/${userId}/favoriteProducts`);
+        const userFavoritesRef = ref(database, `users/${userId}`);
 
         // Save selected products (only id, name, and image)
         const favoriteProducts = this.selectedProducts.map(product => ({
           id: product.id,
           name: product.name,
-          image: product.image
+          image: product.image,
+          tete:product.tete
         }));
 
         await update(userFavoritesRef, {

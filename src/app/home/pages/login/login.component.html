@@ -8,9 +8,10 @@
 
   <ion-card-content>
     <form [formGroup]="validationFormUser" (ngSubmit)="LoginUser()">
-      <div class="wrapform">
+      <div class="title">
         <h2>Se connecter</h2>
-
+      </div>
+      <div class="wrapform">
         <ion-item>
           <ion-input type="text" formControlName="email" placeholder="Adresse e-mail"></ion-input>
         </ion-item>
@@ -39,17 +40,7 @@
         <ion-button class="sign-btn" fill="solid" type="submit" [disabled]="!validationFormUser.valid">Se connecter</ion-button>
       </div>
 
-      <div class="text-tag">
-        <span>Ou via les réseaux sociaux</span>
-      </div>
-      <div class="social-btns">
-        <ion-button fill="clear" class="facebookbtn ion-no-padding" (click)="loginWithFacebook()" style="color: #3b5998;">
-          <ion-icon name="logo-facebook"></ion-icon>
-        </ion-button>
-        <ion-button fill="clear" class="googlebtn ion-no-padding" (click)="GoogleAuth()" style="color: #db4437;">
-          <ion-icon name="logo-google"></ion-icon>
-        </ion-button>
-      </div>
+    
     </form>
   </ion-card-content>
 </ion-content>

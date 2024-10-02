@@ -1,35 +1,41 @@
 ion-content {
-  --background: #ffffff;
+
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff; /* Set the background color for the ion-content */
 }
 
 ion-header {
+  font-family: 'Playfair Display', serif;
+  height: 90px;
   position: relative;
   overflow: hidden;
-  border-radius: 0px 0px 80px 80px;
-  // display: none;
-  // visibility: hidden;
+  border-bottom-left-radius: 200px 75px;
+  border-bottom-right-radius: 200px 75px;
 
   ion-toolbar {
-    border-radius: 0px 0px 80px 80px;
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    justify-content: center;
+    height: 100%;
     --background: linear-gradient(to right, #000000, #000000);
-    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
-    animation: wave 10s infinite linear;
+    border-bottom-left-radius: 200px 75px;
+    border-bottom-right-radius: 200px 75px;
+    --background-size: 200% auto;
+    animation: _ngcontent-ng-c2393436788_wave 10s infinite linear;
 
     ion-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0rem;
       color: white;
-      text-align: center;
+      text-align: center; /* Center the title text */
     }
   }
 }
 
-@keyframes wave {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -100% 50%;
-  }
-}
+
+
+
 
 
 // ion-back-button {

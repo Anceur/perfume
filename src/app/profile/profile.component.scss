@@ -1,137 +1,173 @@
 ion-content {
-  --background: #ffffff;
-  
-  
+  font-family: 'Playfair Display', serif;
+  --background: #ffffff; /* Set the background color for the ion-content */
 }
+
 ion-header {
+  font-family: 'Playfair Display', serif;
+  height: 90px;
   position: relative;
   overflow: hidden;
-  border-radius: 0px 0px 80px 80px;
-  // display: none;
-  // visibility: hidden;
+  border-bottom-left-radius: 200px 75px;
+  border-bottom-right-radius: 200px 75px;
 
   ion-toolbar {
-    border-radius: 0px 0px 80px 80px;
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    justify-content: center;
+    height: 100%;
     --background: linear-gradient(to right, #000000, #000000);
-    --background-size: 200% auto; /* Ensure the gradient is wider than the viewport */
-    animation: wave 10s infinite linear;
+    border-bottom-left-radius: 200px 75px;
+    border-bottom-right-radius: 200px 75px;
+    --background-size: 200% auto;
+    animation: _ngcontent-ng-c2393436788_wave 10s infinite linear;
 
     ion-title {
       font-family: 'Playfair Display', serif;
+      font-size: 1.0rem;
       color: white;
-      text-align: center;
+      text-align: center; /* Center the title text */
     }
   }
-  
 }
-
-@keyframes wave {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -100% 50%;
-  }
-}
-
 
 
 
 .settings-container {
-  margin-top: 45px;
-  padding: 20px;
   background-color: #ffffff;
+  border-radius: 10px;
 
   .section {
     margin-bottom: 40px;
 
     h3 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      color: #333;
+      padding: 20px;
+      font-size: 1.6rem;
+      color: #000000; /* White heading */
+      text-align: center;
     }
-
+    .input-container{
+      width: auto;
+    }
     .input-group {
-      display: flex;
-      justify-content: space-between;
+      background-color: #f3f3f3;
+      display: grid;
+      grid-template-columns: 1fr auto; /* Two columns: label/input on the left, icon on the right */
+      gap: 12px; /* Gap between grid items */
       align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      label {
-        font-size: 0.9rem;
-        color: #666;
-      }
-
-      .input-value {
-        display: flex;
+      padding: 10px 15px;
+      border-bottom: 1px solid #ffffff; /* Optional border for each input group */
+      
+      .input-container {
+        display: grid;
+        grid-template-columns: 150px 1fr; /* Label takes up 150px, value takes the rest */
+        gap: 10px;
         align-items: center;
-        font-size: 1rem;
-        color: #000;
 
-        ion-icon {
-          margin-left: 10px;
-          color: #666;
+        label {
+          font-size: 1rem;
+          color: #666; /* Lighter color for labels */
+          font-weight: bold;
         }
 
-        .flag-icon {
-          width: 20px;
-          height: 14px;
-          margin-right: 5px;
+        .input-value {
+          font-size: 1rem;
+          color: #000; /* Darker color for input values */
         }
       }
 
       ion-toggle {
-        --background: #ccc;
-        --background-checked: #4caf50;
-        --handle-background: #fff;
+        --background: #555;
+        --background-checked: #ffffff; /* White checked background */
+        --handle-background: #000000; /* Black handle */
       }
     }
   }
 
+  /* Updated logout and delete buttons */
+  ion-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+  }
+  .section-account{
+    padding: 20px;
+    display: block;
+  }
+  .section-account h3{
+    font-size: 1.6rem;
+  }
+  .account{
+    padding: 10px;
+  }
+  .log-out {
+    color: #000000;
+    font-weight: 500;
+  }
 
-    ion-button {
-      width: 100%;
-      padding: 15px;
-      font-size: 1rem;
-      color: #fff; 
-      text-align: left;
-      border: none;
-      cursor: pointer;
-      display: block;
-  
-    }
-    .log-out{
-      --background: #000000; // Dark gray background
-      --color: #ffffff; // White text
-      font-weight: bold;
-    }
-    .delete-account{
-      --background: #8a3d3d; // Dark gray background
-      --color: #ffffff; // White text
-      font-weight: bold;
-    }
-
-  
+  .delete-account {
+    color: #ab0000;
+    font-weight: 500;
+    padding-bottom: 90px;
+  }
 }
+.section-div{
+  border-top-left-radius: 200px 75px;
+  border-top-right-radius: 200px 75px;
+  text-align: center;
+  justify-content: center;
+  background-color: #000;
+  display: block;
+  height: auto;
 
-.radar-chart-container {
+}
+.section-div h3{
+  padding: 20px;
+  font-size: 1.6rem;
+  color: #ffffff; /* White heading */
+}
+.section-chart {
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart-container {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Adjust size based on your design */
   margin: 0 auto;
-  background-color: #1b1b1b;
-  border-radius: 50%;
-  padding: 20px;
-}
+  height: auto;
+  
+  .chart-background {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+  }
 
-canvas {
-  width: 100% !important;
-  height: 100% !important;
+  canvas {
+    z-index: 10;
+    position: absolute;
+    top: 51%;
+    left: 51%;
+    transform: translate(-50%, -50%); /* Centers the canvas on the image */
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Disables pointer events on the canvas */
+  }
+  #likesRadarChart {
+    width: 300px !important;
+    height: 300px !important;
+  }
+  
+
 }
 
 .odor-labels {
@@ -156,4 +192,7 @@ canvas {
   height: 20px;
   margin-bottom: 5px;
 }
-
+.text{
+  background-color: #00000000;
+  border-left: #000;
+}

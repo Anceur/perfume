@@ -26,7 +26,7 @@
        
         <swiper-container style="padding: 14px;" slides-per-view="2" speed="500" loop="false" css-mode="true" *ngIf="!showSpinner && products">
           <swiper-slide *ngFor="let product of products">
-            <ion-card (click)="clickCard(product.id)" class="product-card">
+            <ion-card  (click)="clickCard(product.id)" class="product-card">
               <div class="genre-icon">
                 <!-- Femme Icon -->
                 <svg *ngIf="product.genre === 'homme'" fill="currentColor" viewBox="0 0 24 24" class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -84,9 +84,8 @@
                 </svg>
               </div>
               <ion-img [src]="product.image"></ion-img>
-              <ion-card-content style="height: 6vh;">
-                <!-- Conditional SVG icon display -->
-                <p style="font-weight: 500; font-size: 23px;">{{ product.name }}</p>
+              <ion-card-content>
+                <p>{{product.name}}</p>
               </ion-card-content>
             </ion-card>
           </swiper-slide>
@@ -104,7 +103,7 @@
           <h5 >Explorer par marques</h5>
         </ion-text>
     </div>
-    <button class="button"  routerLink="/tabs/tab3">
+    <button class="button"  routerLink="/tabs/search">
       Voir plus
       <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
         <path clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fill-rule="evenodd"></path>
@@ -144,11 +143,9 @@
 
 </div>
   <div class="notes">
-
-    
     <swiper-container slides-per-view="3" speed="500" loop="true" css-mode="true" *ngIf="!showSpinner && notes">
       <swiper-slide *ngFor="let note of notes"> 
-        <ion-card  (click)="clicknote(note.name)" style="cursor: pointer;" >
+        <ion-card  (click)="clicknote(note.name)" style="cursor: pointer;"  >
         <img alt="{{note.name}}" src="{{note.img}}" />
       </ion-card>
     </swiper-slide> 

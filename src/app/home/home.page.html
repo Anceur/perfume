@@ -1,33 +1,21 @@
-<ion-content [fullscreen]="true" class="custom-background">
-  <swiper-container
-    #swiperContainer
-    [slidesPerView]="1"
-    [spaceBetween]="10"
-    class="swiper-container"
-  >
-    <swiper-slide *ngFor="let page of pages; let i = index" [ngClass]="{'active-slide': i === activeIndex}">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="12">
-            <div class="page">
-              <p class="title">{{ page.title }}</p>
-              <div class="image">
-                <!-- Add class 'animate-image' dynamically to active image -->
-                <img [src]="page.image" alt="Page Image" [ngClass]="{'animate-image': i === activeIndex}" />
-              </div>
-              
-              <p>{{ page.description }}</p>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </swiper-slide>
-  </swiper-container>
+<ion-content [fullscreen]="true">
 
-  <ion-progress-bar [value]="progressValue" class="progress-bar"></ion-progress-bar>
+  <!-- Spinner Overlay -->
+  <div class="spinner-overlay" *ngIf="loading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div class="video-container">
+    <video loop autoplay muted width="100%" height="auto" preload="metadata" class="custom-video">
+      <source src="assets/home/home.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <div class="button-container">
-    <ion-button class="white-button" routerLink="/login">Log In</ion-button>
-    <ion-button class="black-button" routerLink="/register">Register</ion-button>
-  </div>
+    <img src="assets/home/logo.png">
+    <ion-text>Trouvez le parfum signature que vous préférez</ion-text>
+      <ion-button expand="block" class="white-button" routerLink="/login">Log In</ion-button>
+      <ion-button expand="block" class="black-button" routerLink="/register">Register</ion-button>
+    </div>
+
 </ion-content>
